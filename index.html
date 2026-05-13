@@ -68,60 +68,69 @@ A central thread in my research is to combine theoretical modelling (BiPhon-HG a
 
 <!-- PUBLICATIONS -->
 <section id="publications" class="section">
-<div class="container narrow">
+  <div class="container narrow">
 
-<h2>Selected Publications</h2>
+    <h2>Selected Publications</h2>
 
+    <div id="pub-container"></div>
+
+  </div>
+</section>
 <div class="publist">
   
 <h3 class="subsection">Journal Articles</h3>
-<div class="pub">
-<span class="year">To appear</span>
-<div>
-Zhou, Chao & Silke Hamann. A revised multi-modal formal account for orthography-induced sound patterns.
-<span class="journal">Linguistic Inquiry</span>
-</div>
-</div>
-  
-<div class="pub">
-<span class="year">2025</span>
-<div>
-Zhou, Chao & João Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude? 
-<span class="journal">Bilingualism: Language and Cognition</span>
-</div>
-</div>
 
-<div class="pub">
-<span class="year">2024</span>
-<div>
-Zhou, Chao & Maria João Freitas. Modeling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.
-<span class="journal">Language Acquisition</span>
-</div>
-</div>
+const publications = [
 
-<div class="pub">
-<span class="year">2024</span>
-<div>
-Zhou, Chao & Silke Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.
-<span class="journal">Glossa</span>
-</div>
-</div>
+{
+  title: "Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?",
+  journal: "Bilingualism: Language and Cognition",
+  year: 2025,
+  doi: "10.1017/S1366728925100114"
+},
 
-<div class="pub">
-<span class="year">2023</span>
-<div>
-Syllable position effects in L2 Portuguese perception.
-<span class="journal">Second Language Research</span>
-</div>
-</div>
+{
+  title: "Modelling the acquisition of the Portuguese tap",
+  journal: "Glossa",
+  year: 2024,
+  doi: "10.16995/glossa.9692"
+},
 
-<div class="pub">
-<span class="year">2021</span>
-<div>
-LextPT: A vocabulary test for L2 Portuguese proficiency.
-<span class="journal">Behavior Research Methods</span>
-</div>
-</div>
+{
+  title: "Syllable position effects in L2 Portuguese perception",
+  journal: "Second Language Research",
+  year: 2023,
+  doi: "10.1177/02676583221137713"
+}
+
+];
+
+const container = document.getElementById("pub-container");
+
+publications.forEach(pub => {
+
+  const div = document.createElement("div");
+
+  div.className = "pub";
+
+  div.innerHTML = `
+    <span class="year">${pub.year}</span>
+
+    <div>
+      ${pub.title}
+      <span class="journal">${pub.journal}</span>
+
+      <div class="meta">
+        <a href="https://doi.org/${pub.doi}" target="_blank">
+          DOI: ${pub.doi}
+        </a>
+      </div>
+    </div>
+  `;
+
+  container.appendChild(div);
+
+});
 
 </div>
 
