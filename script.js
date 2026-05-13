@@ -2,8 +2,11 @@
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener("click", e => {
     e.preventDefault();
+
     document.querySelector(a.getAttribute("href"))
-      .scrollIntoView({ behavior: "smooth" });
+      .scrollIntoView({
+        behavior: "smooth"
+      });
   });
 });
 
@@ -12,22 +15,35 @@ const sections = document.querySelectorAll("section");
 const links = document.querySelectorAll(".nav a");
 
 window.addEventListener("scroll", () => {
+
   let current = "";
 
   sections.forEach(sec => {
+
     const top = sec.offsetTop;
+
     if (scrollY >= top - 120) {
       current = sec.getAttribute("id");
     }
+
   });
 
   links.forEach(a => {
+
     a.classList.remove("active");
+
     if (a.getAttribute("href") === "#" + current) {
       a.classList.add("active");
     }
+
   });
+
 });
+
+
+// =========================
+// PUBLICATIONS
+// =========================
 
 const publications = [
 
@@ -35,9 +51,9 @@ const publications = [
   title: "Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.",
   journal: "Linguistic Inquiry",
   year: "In press",
-  doi: " "
+  doi: ""
 },
-  
+
 {
   title: "Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?",
   journal: "Bilingualism: Language and Cognition",
@@ -88,7 +104,7 @@ const publications = [
 },
 
 {
-  title: "Zhou, C., M. Cruz & S. Frota. O ritmo da interlíngua na produção do Português Europeu por falantes nativos de Chinês Mandarim [Interlanguage Rhythm in European Portuguese production of native speakers of Mandarin Chinese].",
+  title: "Zhou, C., M. Cruz & S. Frota. O ritmo da interlíngua na produção do Português Europeu por falantes nativos de Chinês Mandarim.",
   journal: "Revista da Associação Portuguesa de Linguística",
   year: 2017,
   doi: "10.26334/2183-9077/rapln3ano2017a22"
@@ -96,31 +112,49 @@ const publications = [
 
 ];
 
+
+// =========================
+// RENDER
+// =========================
+
 const container = document.getElementById("pub-container");
 
-publications.forEach(pub => {
+if (container) {
 
-  const div = document.createElement("div");
+  publications.forEach(pub => {
 
-  div.className = "pub";
+    const div = document.createElement("div");
 
-  div.innerHTML = `
-    <span class="year">${pub.year}</span>
+    div.className = "pub";
 
-    <div>
-      ${pub.title}<br>
-      <i>${pub.journal}</i>
+    div.innerHTML = `
 
-      ${pub.doi.trim() ? `
-        <div class="meta">
-          <a href="https://doi.org/${pub.doi}" target="_blank">
-            DOI
-          </a>
-        </div>
-      ` : ""}
-    </div>
-  `;
+      <span class="year">${pub.year}</span>
 
-  container.appendChild(div);
+      <div>
 
-});
+        ${pub.title}<br>
+
+        <i>${pub.journal}</i>
+
+        ${
+          pub.doi
+          ? `
+            <div class="meta">
+              <a href="https://doi.org/${pub.doi}" target="_blank">
+                DOI
+              </a>
+            </div>
+          `
+          : ""
+        }
+
+      </div>
+
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
