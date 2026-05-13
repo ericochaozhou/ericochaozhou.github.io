@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications | Chao Zhou</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --text:       #1a1a1a;
+  --muted:      #6b7280;
+  --subtle:     #9ca3af;
+  --border:     #e8e8e4;
+  --bg:         #fafaf8;
+  --accent:     #1d4ed8;
+  --accent-dim: #dbeafe;
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --size-xs:   11px;
+  --size-sm:   13px;
+  --size-base: 15.5px;
+  --size-lg:   18px;
+  --size-xl:   24px;
+  --size-2xl:  34px;
+
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  28px;
+  --space-lg:  56px;
+  --space-xl:  88px;
+
+  --radius: 3px;
+  --transition: 160ms ease;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: var(--size-base); -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 920px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 28px;
+}
+.logo {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: var(--size-base); letter-spacing: 0.02em;
+  text-decoration: none; color: var(--text);
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--muted); text-decoration: none;
+  font-size: var(--size-sm); font-weight: 400;
+  letter-spacing: 0.02em; padding: 5px 11px;
+  border-radius: 20px;
+  transition: color var(--transition), background var(--transition);
+}
+.back-link:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+
+/* PAGE HEADER */
+.page-header {
+  padding: var(--space-xl) 28px var(--space-lg);
+  max-width: 920px; margin: auto;
+}
+.page-header-label {
+  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+}
+.page-header h1 {
+  font-family: var(--font-display); font-size: var(--size-2xl);
+  font-weight: 500; letter-spacing: -0.015em; line-height: 1.2;
+  margin-bottom: 10px;
+}
+.page-header-sub { font-size: var(--size-sm); color: var(--muted); }
+
+/* LAYOUT */
+.container { max-width: 920px; margin: auto; padding: 0 28px var(--space-xl); }
+.narrow { max-width: 680px; }
+
+h2 {
+  font-family: var(--font-display); font-size: var(--size-xl);
+  font-weight: 500; line-height: 1.25; letter-spacing: -0.01em;
+}
+
+hr { border: none; border-top: 1px solid var(--border); max-width: 920px; margin: 0 auto; }
+
+/* SECTION */
+.pub-section { margin-bottom: var(--space-lg); }
+.pub-section-label {
+  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+
+/* PUBS */
+.publist { display: flex; flex-direction: column; }
+.pub {
+  display: grid; grid-template-columns: 68px 1fr; gap: 0 20px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.pub:first-child { border-top: 1px solid var(--border); }
+.pub:hover { background: rgba(0,0,0,0.015); margin: 0 -12px; padding: 20px 12px; border-radius: var(--radius); }
+.year { font-size: var(--size-sm); color: var(--subtle); letter-spacing: 0.03em; padding-top: 3px; white-space: nowrap; }
+.pub-body { display: flex; flex-direction: column; gap: 4px; }
+.pub-authors { color: var(--muted); font-size: var(--size-sm); display: block; margin-bottom: 2px; }
+.pub-title { font-size: var(--size-base); line-height: 1.65; }
+.journal { font-family: var(--font-display); font-style: italic; font-size: var(--size-sm); color: var(--muted); display: block; line-height: 1.5; }
+.meta { margin-top: 4px; font-size: var(--size-xs); }
+.meta a {
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; font-size: 10px;
+  opacity: 0.8; transition: opacity var(--transition);
+}
+.meta a:hover { opacity: 1; text-decoration: underline; }
+
+/* FOOTER */
+.footer { text-align: center; padding: 36px 28px; color: var(--subtle); font-size: var(--size-sm); letter-spacing: 0.02em; border-top: 1px solid var(--border); }
+
+@media (max-width: 640px) {
+  h2 { font-size: var(--size-lg); }
+  .nav-inner { padding: 14px 18px; }
+  .page-header { padding-left: 18px; padding-right: 18px; }
+  .container { padding-left: 18px; padding-right: 18px; }
+  .pub { grid-template-columns: 54px 1fr; gap: 0 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Chao Zhou</a>
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.5 7H2.5M2.5 7L6 3.5M2.5 7L6 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back
+    </a>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="page-header narrow" style="margin: 0 auto; max-width: 680px; padding-left: 28px; padding-right: 28px;">
+  <div class="page-header-label">Chao Zhou</div>
+  <h1>Publications</h1>
+  <p class="page-header-sub">9 journal articles · 9 book chapters &amp; proceedings</p>
+</div>
+
+<hr>
+
+<!-- FULL LIST -->
+<div class="container narrow" style="max-width: 680px; padding-top: var(--space-lg);">
+
+  <div class="pub-section">
+    <div class="pub-section-label">Journal Articles</div>
+    <div class="publist" id="pub-container"></div>
+  </div>
+
+  <div class="pub-section">
+    <div class="pub-section-label">Book Chapters &amp; Conference Proceedings</div>
+    <div class="publist" id="proc-container"></div>
+  </div>
+
+</div>
+
+<footer class="footer">© 2026 Chao Zhou · University of Lisbon</footer>
+
+<script>
+// ── JOURNAL ARTICLES ──────────────────────────────────────
+var publications = [
+  { title: 'Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.', journal: 'Linguistic Inquiry', year: 'In press', doi: '10.1017/S136672892510011x' },
+  { title: 'Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?', journal: 'Bilingualism: Language and Cognition', year: 2025, doi: '10.1017/S1366728925100114' },
+  { title: 'Zhou, C. & M. J. Freitas. Modelling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.', journal: 'Language Acquisition', year: 2024, doi: '10.1080/10489223.2024.2314029' },
+  { title: 'Zhou, C. & S. Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.', journal: 'Glossa: a journal of general linguistics', year: 2024, doi: '10.16995/glossa.9692' },
+  { title: 'Zhou, C. & A. Rato. Syllable position effects in the perception of L2 Portuguese /l/ and /ɾ/ by L1-Mandarin learners.', journal: 'Second Language Research', year: 2023, doi: '10.1177/02676583221137713' },
+  { title: 'Flores, C., C. Zhou & C. Eira. "I no longer count in German". On dominance shift in returnee heritage speakers.', journal: 'Applied Psycholinguistics', year: 2022, doi: '10.1017/S0142716422000261' },
+  { title: 'Zhou, C. & X. Li. LextPT: A reliable and efficient vocabulary size test for L2 Portuguese proficiency.', journal: 'Behavior Research Methods', year: 2021, doi: '10.3758/s13428-021-01731-1' },
+  { title: 'Zhou, C. Dissertation Notice: L2 speech learning of European Portuguese /l/ and /ɾ/ by L1-Mandarin learners: Experimental evidence and theoretical modelling.', journal: 'Language Acquisition', year: 2021, doi: '10.1080/10489223.2021.1952591' },
+  { title: 'Zhou, C., M. Cruz & S. Frota. O ritmo da interlíngua na produção do Português Europeu por falantes nativos de Chinês Mandarim.', journal: 'Revista da Associação Portuguesa de Linguística', year: 2017, doi: '10.26334/2183-9077/rapln3ano2017a22' }
+];
+
+var pubEl = document.getElementById('pub-container');
+publications.forEach(function(p) {
+  var d = document.createElement('div');
+  d.className = 'pub';
+  d.innerHTML =
+    '<span class="year">' + p.year + '</span>' +
+    '<div class="pub-body">' +
+      '<span class="pub-title">' + p.title + '</span>' +
+      '<em class="journal">' + p.journal + '</em>' +
+      (p.doi ? '<div class="meta"><a href="https://doi.org/' + p.doi + '" target="_blank" rel="noopener">DOI ↗</a></div>' : '') +
+    '</div>';
+  pubEl.appendChild(d);
+});
+
+// ── BOOK CHAPTERS & PROCEEDINGS ───────────────────────────
+var proceedings = [
+  { authors: 'Matzenauer, C., Freitas, M. J. & C. Zhou.', title: 'Theoretical models for phonological development.', book: 'Trends in the Acquisition of Portuguese Phonology', year: 2026, link: 'https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989', linkLabel: 'Link' },
+  { authors: 'Alves, U., Castelo, A., Rato, A. & C. Zhou.', title: 'Portuguese L2 Phonology.', book: 'Trends in the Acquisition of Portuguese Phonology', year: 2026, link: 'https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989', linkLabel: 'Link' },
+  { authors: 'Berti, L. & C. Zhou.', title: 'Relação entre produção e percepção das líquidas no Português: Dados de aquisição de L1 e L2.', book: 'Fonologia do Português e Interfaces: Fenômenos da Aquisição e da Variação', year: 2023, link: 'https://doi.org/10.4324/9781003294344-7', linkLabel: 'DOI' },
+  { authors: 'Cao, Y., C. Zhou & G. Hristovsky.', title: 'Exploring the Phonetic Context Effects on the Production of Portuguese /ɾ/ by L1-Mandarin Learners.', book: 'Proceedings of 20th International Congress of Phonetic Sciences (ICPhS)', year: 2023, link: 'https://www.researchgate.net/publication/370230928', linkLabel: 'Preprint' },
+  { authors: 'Zhou, C.', title: 'O contraste lateral-rótico do português europeu e do chinês mandarim: análise comparativa e estudos de PLE.', book: 'Linguística Contrastiva: Estudos Português – Chinês. Zhang, J. & Grosso, M. (eds.), University of Macau', year: 2023, link: 'https://www.researchgate.net/publication/368983650', linkLabel: 'Preprint' },
+  { authors: 'Zhou, C. & A. Jesus.', title: 'Portuguese Has Two Underlying Rhotics: Evidence from Lisbon and Carioca Varieties.', book: 'Supplemental Proceedings of the 2021 Annual Meeting on Phonology', year: 2022, link: 'https://doi.org/10.3765/amp.v9i0.5167', linkLabel: 'DOI' },
+  { authors: 'Zhou, C. & M. J. Freitas.', title: 'A ordem da aquisição dos plurais com lateral final do PE: uma análise à luz da Teoria da Otimidade.', book: 'Atas do I PhonOshuttle Opo – Ponte Aérea de Fonologia', year: 2022, link: 'https://ler.letras.up.pt/uploads/ficheiros/19217.pdf', linkLabel: 'Link' },
+  { authors: 'Zhou, C., M. J. Freitas & A. Castelo.', title: 'On the Acquisition of European Portuguese Liquid Consonants by L1-Mandarin Learners.', book: 'Multilingualism and Third Language Acquisition: Learning and Teaching Trends. Pinto, J. & Alexandre, N. (eds.), Language Science Press', year: 2021, link: 'https://langsci-press.org/catalog/book/290', linkLabel: 'DOI' },
+  { authors: 'Zhou, C. & S. Hamann.', title: 'Cross-linguistic interaction between phonological categorization and orthography predicts prosodic effects in the acquisition of Portuguese liquids by L1-Mandarin learners.', book: 'Proceedings of Interspeech 2020', year: 2020, link: 'http://doi.org/10.21437/interspeech.2020-2689', linkLabel: 'DOI' }
+];
+
+var procEl = document.getElementById('proc-container');
+proceedings.forEach(function(p) {
+  var d = document.createElement('div');
+  d.className = 'pub';
+  d.innerHTML =
+    '<span class="year">' + p.year + '</span>' +
+    '<div class="pub-body">' +
+      '<span class="pub-authors">' + p.authors + '</span>' +
+      '<span class="pub-title">' + p.title + '</span>' +
+      '<em class="journal">' + p.book + '</em>' +
+      (p.link ? '<div class="meta"><a href="' + p.link + '" target="_blank" rel="noopener">' + p.linkLabel + ' ↗</a></div>' : '') +
+    '</div>';
+  procEl.appendChild(d);
+});
+</script>
+</body>
+</html>
