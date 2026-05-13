@@ -80,58 +80,6 @@ A central thread in my research is to combine theoretical modelling (BiPhon-HG a
   
 <h3 class="subsection">Journal Articles</h3>
 
-const publications = [
-
-{
-  title: "Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?",
-  journal: "Bilingualism: Language and Cognition",
-  year: 2025,
-  doi: "10.1017/S1366728925100114"
-},
-
-{
-  title: "Modelling the acquisition of the Portuguese tap",
-  journal: "Glossa",
-  year: 2024,
-  doi: "10.16995/glossa.9692"
-},
-
-{
-  title: "Syllable position effects in L2 Portuguese perception",
-  journal: "Second Language Research",
-  year: 2023,
-  doi: "10.1177/02676583221137713"
-}
-
-];
-
-const container = document.getElementById("pub-container");
-
-publications.forEach(pub => {
-
-  const div = document.createElement("div");
-
-  div.className = "pub";
-
-  div.innerHTML = `
-    <span class="year">${pub.year}</span>
-
-    <div>
-      ${pub.title}
-      <span class="journal">${pub.journal}</span>
-
-      <div class="meta">
-        <a href="https://doi.org/${pub.doi}" target="_blank">
-          DOI: ${pub.doi}
-        </a>
-      </div>
-    </div>
-  `;
-
-  container.appendChild(div);
-
-});
-
 </div>
 
 </div>
