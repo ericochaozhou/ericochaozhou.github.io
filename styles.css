@@ -242,6 +242,21 @@ ul.clean + p {
 /* =====================
    PUBLICATIONS
    ===================== */
+.pub-section {
+  margin-top: var(--space-lg);
+}
+
+.pub-section-label {
+  font-size: var(--size-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
 .publist {
   display: flex;
   flex-direction: column;
@@ -287,6 +302,13 @@ ul.clean + p {
   font-size: var(--size-base);
   line-height: 1.65;
   color: var(--text);
+}
+
+.pub-authors {
+  color: var(--muted);
+  font-size: var(--size-sm);
+  display: block;
+  margin-bottom: 2px;
 }
 
 .journal {
@@ -341,6 +363,106 @@ ul.clean + p {
 
 .link:hover {
   border-bottom-color: var(--accent);
+}
+
+/* =====================
+   SUPERVISION
+   ===================== */
+.supervision-section {
+  margin-top: var(--space-lg);
+}
+
+.sup-group-label {
+  font-size: var(--size-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sup-item {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 0 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.sup-item:hover {
+  background: rgba(0,0,0,0.015);
+  margin: 0 -12px;
+  padding: 18px 12px;
+  border-radius: var(--radius);
+}
+
+.sup-badge {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 3px;
+  font-size: var(--size-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.sup-badge.ongoing {
+  color: #059669;
+}
+
+.sup-badge.year {
+  color: var(--subtle);
+}
+
+.sup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sup-name {
+  font-weight: 500;
+  font-size: var(--size-base);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.sup-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--size-sm);
+  color: var(--text);
+  line-height: 1.55;
+  margin-top: 2px;
+}
+
+.sup-title-en {
+  font-size: var(--size-sm);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.sup-meta {
+  font-size: var(--size-xs);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+
+.sup-cosup {
+  font-size: var(--size-xs);
+  color: var(--subtle);
+  letter-spacing: 0.01em;
 }
 
 /* =====================
