@@ -51,7 +51,7 @@ const publications = [
   title: "Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.",
   journal: "Linguistic Inquiry",
   year: "In press",
-  doi: "10.1017/S1366728925100114"
+  doi: "10.1017/S136672892510011x"
 },
 
 {
