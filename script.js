@@ -92,8 +92,112 @@ const publications = [
 
 
 // =====================
-// RENDER PUBLICATIONS
+// PROCEEDINGS DATA
 // =====================
+const proceedings = [
+  {
+    authors: "Matzenauer, C., Freitas, M. J. & C. Zhou.",
+    title: "Theoretical models for phonological development.",
+    book: "Trends in the Acquisition of Portuguese Phonology",
+    year: 2026,
+    link: "https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989",
+    linkLabel: "Link"
+  },
+  {
+    authors: "Alves, U., Castelo, A., Rato, A. & C. Zhou.",
+    title: "Portuguese L2 Phonology.",
+    book: "Trends in the Acquisition of Portuguese Phonology",
+    year: 2026,
+    link: "https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989",
+    linkLabel: "Link"
+  },
+  {
+    authors: "Berti, L. & C. Zhou.",
+    title: "Relação entre produção e percepção das líquidas no Português: Dados de aquisição de L1 e L2.",
+    book: "Fonologia do Português e Interfaces: Fenômenos da Aquisição e da Variação",
+    year: 2023,
+    link: "https://doi.org/10.4324/9781003294344-7",
+    linkLabel: "DOI"
+  },
+  {
+    authors: "Cao, Y., C. Zhou & G. Hristovsky.",
+    title: "Exploring the Phonetic Context Effects on the Production of Portuguese /ɾ/ by L1-Mandarin Learners.",
+    book: "Proceedings of 20th International Congress of Phonetic Sciences (ICPhS)",
+    year: 2023,
+    link: "https://www.researchgate.net/publication/370230928_Exploring_the_Phonetic_Context_Effects_on_the_Production_of_Portuguese_r_by_L1-Mandarin_Learners",
+    linkLabel: "Preprint"
+  },
+  {
+    authors: "Zhou, C.",
+    title: "O contraste lateral-rótico do português europeu e do chinês mandarim: análise comparativa e estudos de PLE.",
+    book: "Linguística Contrastiva: Estudos Português – Chinês. Zhang, J. & Grosso, M. (eds.), University of Macau",
+    year: 2023,
+    link: "https://www.researchgate.net/publication/368983650_O_contraste_lateral-rotico_do_portugues_europeu_e_do_chines_mandarim_analise_comparativa_e_estudos_de_PLE_hanyuputonghuayijiouzhouputaoyayuzhongdebianyin-R_yinduiliduibifenxiyijiputaoya_yuzuoweiwaiyux",
+    linkLabel: "Preprint"
+  },
+  {
+    authors: "Zhou, C. & A. Jesus.",
+    title: "Portuguese Has Two Underlying Rhotics: Evidence from Lisbon and Carioca Varieties.",
+    book: "Supplemental Proceedings of the 2021 Annual Meeting on Phonology",
+    year: 2022,
+    link: "https://doi.org/10.3765/amp.v9i0.5167",
+    linkLabel: "DOI"
+  },
+  {
+    authors: "Zhou, C. & M. J. Freitas.",
+    title: "A ordem da aquisição dos plurais com lateral final do PE: uma análise à luz da Teoria da Otimidade.",
+    book: "Atas do I PhonOshuttle Opo – Ponte Aérea de Fonologia",
+    year: 2022,
+    link: "https://ler.letras.up.pt/uploads/ficheiros/19217.pdf",
+    linkLabel: "Link"
+  },
+  {
+    authors: "Zhou, C., M. J. Freitas & A. Castelo.",
+    title: "On the Acquisition of European Portuguese Liquid Consonants by L1-Mandarin Learners.",
+    book: "Multilingualism and Third Language Acquisition: Learning and Teaching Trends. Pinto, J. & Alexandre, N. (eds.), Language Science Press",
+    year: 2021,
+    link: "https://langsci-press.org/catalog/book/290",
+    linkLabel: "DOI"
+  },
+  {
+    authors: "Zhou, C. & S. Hamann.",
+    title: "Cross-linguistic interaction between phonological categorization and orthography predicts prosodic effects in the acquisition of Portuguese liquids by L1-Mandarin learners.",
+    book: "Proceedings of Interspeech 2020",
+    year: 2020,
+    link: "http://doi.org/10.21437/interspeech.2020-2689",
+    linkLabel: "DOI"
+  }
+];
+
+
+// =====================
+// RENDER PROCEEDINGS
+// =====================
+const procContainer = document.getElementById("proc-container");
+
+if (procContainer) {
+  proceedings.forEach(pub => {
+    const div = document.createElement("div");
+    div.className = "pub";
+
+    div.innerHTML = `
+      <span class="year">${pub.year}</span>
+      <div class="pub-body">
+        <span class="pub-title">
+          <span class="pub-authors">${pub.authors}</span>
+          ${pub.title}
+        </span>
+        <em class="journal">${pub.book}</em>
+        ${pub.link ? `
+          <div class="meta">
+            <a href="${pub.link}" target="_blank" rel="noopener">${pub.linkLabel} ↗</a>
+          </div>` : ""}
+      </div>
+    `;
+
+    procContainer.appendChild(div);
+  });
+}
 const container = document.getElementById("pub-container");
 
 if (container) {
