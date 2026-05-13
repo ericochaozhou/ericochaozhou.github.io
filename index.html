@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,222 +7,434 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-</head>
+<style>
+/* =====================
+   TOKENS
+   ===================== */
+:root {
+  --text:       #1a1a1a;
+  --muted:      #6b7280;
+  --subtle:     #9ca3af;
+  --border:     #e8e8e4;
+  --bg:         #fafaf8;
+  --accent:     #1d4ed8;
+  --accent-dim: #dbeafe;
 
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --size-xs:   11px;
+  --size-sm:   13px;
+  --size-base: 15.5px;
+  --size-lg:   18px;
+  --size-xl:   24px;
+  --size-2xl:  34px;
+  --size-3xl:  48px;
+
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  28px;
+  --space-lg:  56px;
+  --space-xl:  88px;
+
+  --radius: 3px;
+  --transition: 160ms ease;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { font-size: var(--size-base); -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 920px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 28px;
+}
+.logo { font-family: var(--font-display); font-weight: 500; font-size: var(--size-base); letter-spacing: 0.02em; }
+nav { display: flex; align-items: center; gap: 4px; }
+nav a {
+  display: inline-block; padding: 5px 11px;
+  text-decoration: none; color: var(--muted);
+  font-size: var(--size-sm); font-weight: 400; letter-spacing: 0.025em;
+  border-radius: 20px;
+  transition: color var(--transition), background var(--transition);
+}
+nav a:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+nav a.active { color: var(--accent); background: var(--accent-dim); }
+
+/* LAYOUT */
+.section { padding: var(--space-xl) 28px; }
+.container { max-width: 920px; margin: auto; }
+.narrow { max-width: 680px; }
+
+/* TYPOGRAPHY */
+h1 {
+  font-family: var(--font-display); font-size: var(--size-3xl);
+  font-weight: 500; line-height: 1.15; letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+h2 {
+  font-family: var(--font-display); font-size: var(--size-xl);
+  font-weight: 500; line-height: 1.25; letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+p { font-size: var(--size-base); line-height: 1.85; margin-bottom: var(--space-sm); }
+p:last-child { margin-bottom: 0; }
+p + p { margin-top: var(--space-sm); }
+.role { font-weight: 300; color: var(--muted); letter-spacing: 0.02em; margin-bottom: var(--space-md); }
+.muted { color: var(--muted); font-size: var(--size-sm); }
+
+/* HR */
+hr { border: none; border-top: 1px solid var(--border); max-width: 920px; margin: 0 auto; }
+
+/* LISTS */
+ul.clean { margin: var(--space-sm) 0 var(--space-md) 20px; display: flex; flex-direction: column; gap: 6px; }
+ul.clean li { font-size: var(--size-base); line-height: 1.65; }
+
+/* TEACHING BLOCKS */
+.teaching-block { margin-bottom: var(--space-md); }
+.teaching-block:last-child { margin-bottom: 0; }
+.teaching-block b {
+  font-weight: 500; font-size: var(--size-sm); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); display: block; margin-bottom: var(--space-xs);
+}
+
+/* SUPERVISION */
+.supervision-section { margin-top: var(--space-lg); }
+.sup-group-label {
+  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.sup-list { display: flex; flex-direction: column; }
+.sup-item {
+  display: grid; grid-template-columns: 68px 1fr; gap: 0 20px;
+  padding: 18px 0; border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.sup-item:hover { background: rgba(0,0,0,0.015); margin: 0 -12px; padding: 18px 12px; border-radius: var(--radius); }
+.sup-badge { display: inline-flex; align-items: flex-start; justify-content: center; padding-top: 3px; font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; }
+.sup-badge.ongoing { color: #059669; }
+.sup-badge.year { color: var(--subtle); }
+.sup-body { display: flex; flex-direction: column; gap: 3px; }
+.sup-name { font-weight: 500; font-size: var(--size-base); line-height: 1.4; }
+.sup-title { font-family: var(--font-display); font-style: italic; font-size: var(--size-sm); line-height: 1.55; margin-top: 2px; }
+.sup-title-en { font-size: var(--size-sm); color: var(--muted); line-height: 1.5; }
+.sup-meta { font-size: var(--size-xs); color: var(--muted); letter-spacing: 0.02em; margin-top: 4px; }
+.sup-cosup { font-size: var(--size-xs); color: var(--subtle); }
+
+/* PUBLICATIONS */
+.pub-section { margin-top: var(--space-lg); }
+.pub-section-label {
+  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.publist { display: flex; flex-direction: column; }
+.pub {
+  display: grid; grid-template-columns: 68px 1fr; gap: 0 20px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.pub:first-child { border-top: 1px solid var(--border); }
+.pub:hover { background: rgba(0,0,0,0.015); margin: 0 -12px; padding: 20px 12px; border-radius: var(--radius); }
+.year { font-size: var(--size-sm); color: var(--subtle); letter-spacing: 0.03em; padding-top: 3px; white-space: nowrap; }
+.pub-body { display: flex; flex-direction: column; gap: 4px; }
+.pub-authors { color: var(--muted); font-size: var(--size-sm); display: block; margin-bottom: 2px; }
+.pub-title { font-size: var(--size-base); line-height: 1.65; }
+.journal { font-family: var(--font-display); font-style: italic; font-size: var(--size-sm); color: var(--muted); display: block; line-height: 1.5; }
+.meta { margin-top: 4px; font-size: var(--size-xs); }
+.meta a {
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; font-size: 10px;
+  opacity: 0.8; transition: opacity var(--transition);
+}
+.meta a:hover { opacity: 1; text-decoration: underline; }
+
+/* LINKS */
+.link {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid transparent; transition: border-color var(--transition);
+}
+.link:hover { border-bottom-color: var(--accent); }
+
+/* EMAIL */
+.email-line {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; border: 1px solid var(--border); border-radius: 4px;
+  padding: 8px 14px; margin-top: var(--space-md);
+  font-size: var(--size-sm); color: var(--muted); letter-spacing: 0.015em;
+}
+.email-line::before { content: '\2709'; font-size: 12px; opacity: 0.6; }
+
+/* LEXTPT STATS */
+.stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin: var(--space-md) 0; }
+.stat { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 14px 20px; min-width: 160px; }
+.stat-num { font-family: var(--font-display); font-size: var(--size-2xl); font-weight: 500; line-height: 1; display: block; margin-bottom: 4px; }
+.stat-label { font-size: var(--size-xs); color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* FOOTER */
+.footer { text-align: center; padding: 36px 28px; color: var(--subtle); font-size: var(--size-sm); letter-spacing: 0.02em; border-top: 1px solid var(--border); }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  h1 { font-size: 34px; }
+  h2 { font-size: var(--size-lg); }
+  .nav-inner { padding: 14px 18px; }
+  .section { padding: 56px 18px; }
+  nav a { padding: 4px 8px; font-size: 12px; }
+  .pub, .sup-item { grid-template-columns: 54px 1fr; gap: 0 12px; }
+}
+</style>
+</head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="logo">Chao Zhou</div>
-      <nav>
-        <a href="#bio">Bio</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#lextpt">LextPT</a>
-      </nav>
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">Chao Zhou</div>
+    <nav>
+      <a href="#bio">Bio</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#lextpt">LextPT</a>
+    </nav>
+  </div>
+</header>
+
+<!-- BIO -->
+<section id="bio" class="section">
+  <div class="container narrow">
+    <h1>Chao Zhou</h1>
+    <p class="role">Assistant Professor · University of Lisbon</p>
+    <p>I am a phonologist working in the Department of General and Romance Linguistics at the University of Lisbon (ULisboa).</p>
+    <p>A central thread in my research is to combine theoretical modelling (BiPhon-HG and OT) and experimental methods to understand how abstract phonological knowledge is acquired, represented, and shaped by multilingual experience.</p>
+    <div class="email-line">zhouchao at edu.ulisboa.pt</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="section">
+  <div class="container narrow">
+    <h2>Publications</h2>
+
+    <div class="pub-section">
+      <div class="pub-section-label">Journal Articles</div>
+      <div class="publist" id="pub-container"></div>
     </div>
-  </header>
 
-  <!-- BIO -->
-  <section id="bio" class="section">
-    <div class="container narrow">
-      <h1>Chao Zhou</h1>
-      <p class="role">Assistant Professor · University of Lisbon</p>
-      <p>
-        I am a phonologist working in the Department of General and Romance Linguistics
-        at the University of Lisbon (ULisboa).
-      </p>
-      <div class="email-line">zhouchao at edu.ulisboa.pt</div>
+    <div class="pub-section">
+      <div class="pub-section-label">Book Chapters &amp; Conference Proceedings</div>
+      <div class="publist" id="proc-container"></div>
     </div>
-  </section>
 
-  <hr>
+  </div>
+</section>
 
-  <!-- RESEARCH -->
-  <section id="research" class="section">
-    <div class="container narrow">
-      <h2>Research</h2>
-      <p>
-        A central thread in my research is to combine theoretical modelling
-        (BiPhon-HG and OT) and experimental methods to understand how abstract
-        phonological knowledge is acquired, represented, and shaped by multilingual
-        experience.
-      </p>
+<hr>
+
+<!-- TEACHING -->
+<section id="teaching" class="section">
+  <div class="container narrow">
+    <h2>Teaching</h2>
+
+    <div class="teaching-block">
+      <b>University of Lisbon</b>
+      <ul class="clean">
+        <li>Phonology: Theoretical Approaches and Experimental Methods</li>
+        <li>L2 Acquisition and Development</li>
+        <li>The Study of Human Language</li>
+        <li>Scientific &amp; Technical Translation (Chinese–Portuguese)</li>
+      </ul>
     </div>
-  </section>
 
-  <hr>
-
-  <!-- PUBLICATIONS -->
-  <section id="publications" class="section">
-    <div class="container narrow">
-      <h2>Publications</h2>
-
-      <div class="pub-section">
-        <div class="pub-section-label">Journal Articles</div>
-        <div class="publist" id="pub-container"></div>
-      </div>
-
-      <div class="pub-section">
-        <div class="pub-section-label">Book Chapters &amp; Conference Proceedings</div>
-        <div class="publist" id="proc-container"></div>
-      </div>
+    <div class="teaching-block">
+      <b>University of Minho</b>
+      <ul class="clean">
+        <li>Phonetics, Phonology and L2 Acquisition</li>
+        <li>Advanced Chinese Grammar</li>
+      </ul>
     </div>
-  </section>
 
-  <hr>
+    <div class="supervision-section">
+      <div class="sup-group-label">PhD Supervision</div>
+      <div class="sup-list">
 
-  <!-- TEACHING -->
-  <section id="teaching" class="section">
-    <div class="container narrow">
-      <h2>Teaching</h2>
-
-      <div class="teaching-block">
-        <b>University of Lisbon</b>
-        <ul class="clean">
-          <li>Phonology: Theoretical Approaches and Experimental Methods</li>
-          <li>L2 Acquisition and Development</li>
-          <li>The Study of Human Language</li>
-          <li>Scientific &amp; Technical Translation (Chinese–Portuguese)</li>
-        </ul>
-      </div>
-
-      <div class="teaching-block">
-        <b>University of Minho</b>
-        <ul class="clean">
-          <li>Phonetics, Phonology and L2 Acquisition</li>
-          <li>Advanced Chinese Grammar</li>
-        </ul>
-      </div>
-
-      <!-- SUPERVISION -->
-      <div class="supervision-section">
-        <div class="sup-group-label">PhD Supervision</div>
-
-        <div class="sup-list">
-
-          <div class="sup-item">
-            <span class="sup-badge ongoing">Ongoing</span>
-            <div class="sup-body">
-              <span class="sup-name">Alexandra Afonso</span>
-              <span class="sup-title">Desenvolvimento das competências de perceção da fala em crianças portuguesas com desenvolvimento típico</span>
-              <span class="sup-title-en">Development of speech perception competencies in Portuguese children with typical development</span>
-              <span class="sup-meta">PhD in Linguistics · University of Lisbon</span>
-              <span class="sup-cosup">Co-supervision with Ana Catarina Baptista and Susana Rodrigues</span>
-            </div>
+        <div class="sup-item">
+          <span class="sup-badge ongoing">Ongoing</span>
+          <div class="sup-body">
+            <span class="sup-name">Alexandra Afonso</span>
+            <span class="sup-title">Desenvolvimento das competências de perceção da fala em crianças portuguesas com desenvolvimento típico</span>
+            <span class="sup-title-en">Development of speech perception competencies in Portuguese children with typical development</span>
+            <span class="sup-meta">PhD in Linguistics · University of Lisbon</span>
+            <span class="sup-cosup">Co-supervision with Ana Catarina Baptista and Susana Rodrigues</span>
           </div>
-
-          <div class="sup-item">
-            <span class="sup-badge ongoing">Ongoing</span>
-            <div class="sup-body">
-              <span class="sup-name">Carolina Miranda</span>
-              <span class="sup-title">Code-switching em falantes bilingues de Português Europeu e Chinês Mandarim: efeitos a nível suprassegmental</span>
-              <span class="sup-title-en">Code-switching in bilingual speakers of European Portuguese and Mandarin Chinese: effects at the suprasegmental level</span>
-              <span class="sup-meta">PhD in Linguistics · University of Lisbon</span>
-              <span class="sup-cosup">Co-supervision with Marisa Cruz</span>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <div class="supervision-section">
-        <div class="sup-group-label">MA Supervision</div>
-
-        <div class="sup-list">
-
-          <div class="sup-item">
-            <span class="sup-badge ongoing">Ongoing</span>
-            <div class="sup-body">
-              <span class="sup-name">Aira Nosolini</span>
-              <span class="sup-title">A perceção do T3 sândi do chinês mandarim por falantes de herança e aprendentes L2</span>
-              <span class="sup-title-en">Perception of Mandarin T3 sandhi by heritage and L2 speakers</span>
-              <span class="sup-meta">MA in Estudos Interculturais Português/Chinês · University of Minho</span>
-              <span class="sup-cosup">Co-supervision with Cristina Flores</span>
-            </div>
+        <div class="sup-item">
+          <span class="sup-badge ongoing">Ongoing</span>
+          <div class="sup-body">
+            <span class="sup-name">Carolina Miranda</span>
+            <span class="sup-title">Code-switching em falantes bilingues de Português Europeu e Chinês Mandarim: efeitos a nível suprassegmental</span>
+            <span class="sup-title-en">Code-switching in bilingual speakers of European Portuguese and Mandarin Chinese: effects at the suprasegmental level</span>
+            <span class="sup-meta">PhD in Linguistics · University of Lisbon</span>
+            <span class="sup-cosup">Co-supervision with Marisa Cruz</span>
           </div>
-
-          <div class="sup-item">
-            <span class="sup-badge year">2025</span>
-            <div class="sup-body">
-              <span class="sup-name">Nga In Lai</span>
-              <span class="sup-title">Aquisição fonológica do português europeu por aprendentes bilingues cantonês-mandarim: restrições fonotáticas ou vantagens do bilinguismo?</span>
-              <span class="sup-title-en">Phonological acquisition of European Portuguese by bilingual Cantonese-Mandarin learners: Phonotactic restrictions or advantages of bilingualism?</span>
-              <span class="sup-meta">MA in Linguistics · University of Lisbon</span>
-              <span class="sup-cosup">Co-supervision with Adelina Castelo</span>
-            </div>
-          </div>
-
-          <div class="sup-item">
-            <span class="sup-badge year">2024</span>
-            <div class="sup-body">
-              <span class="sup-name">Xinyan Wang</span>
-              <span class="sup-title">Aquisição do processo de assimilação do vozeamento da fricativa /s/ em Português Europeu por aprendentes chineses</span>
-              <span class="sup-title-en">Acquisition of the voicing assimilation process in European Portuguese by L1-Mandarin learners</span>
-              <span class="sup-meta">MA in Linguistics · University of Lisbon</span>
-              <span class="sup-cosup">Co-supervision with Adelina Castelo</span>
-            </div>
-          </div>
-
-          <div class="sup-item">
-            <span class="sup-badge year">2022</span>
-            <div class="sup-body">
-              <span class="sup-name">Yidan Cao</span>
-              <span class="sup-title">Efeitos do contexto adjacente na aquisição das consonantes líquidas em ataque ramificado do português europeu por aprendentes chineses</span>
-              <span class="sup-title-en">Effects of adjacent contexts on the acquisition of Portuguese liquid consonants by L1-Mandarin learners</span>
-              <span class="sup-meta">MA in Linguistics · University of Lisbon</span>
-              <span class="sup-cosup">Co-supervision with Gueorgui Hristovsky</span>
-            </div>
-          </div>
-
         </div>
-      </div>
 
+      </div>
     </div>
-  </section>
 
-  <hr>
+    <div class="supervision-section">
+      <div class="sup-group-label">MA Supervision</div>
+      <div class="sup-list">
 
-  <!-- LEXTPT -->
-  <section id="lextpt" class="section">
-    <div class="container narrow">
-      <h2>LextPT</h2>
-      <p>
-        A validated 5-minute vocabulary size test for L2 Portuguese proficiency,
-        providing a fast and reliable measure of lexical knowledge.
-      </p>
+        <div class="sup-item">
+          <span class="sup-badge ongoing">Ongoing</span>
+          <div class="sup-body">
+            <span class="sup-name">Aira Nosolini</span>
+            <span class="sup-title">A perceção do T3 sândi do chinês mandarim por falantes de herança e aprendentes L2</span>
+            <span class="sup-title-en">Perception of Mandarin T3 sandhi by heritage and L2 speakers</span>
+            <span class="sup-meta">MA in Estudos Interculturais Português/Chinês · University of Minho</span>
+            <span class="sup-cosup">Co-supervision with Cristina Flores</span>
+          </div>
+        </div>
 
-      <div class="stat-row">
-        <div class="stat">
-          <span class="stat-num">452</span>
-          <span class="stat-label">Participants validated</span>
+        <div class="sup-item">
+          <span class="sup-badge year">2025</span>
+          <div class="sup-body">
+            <span class="sup-name">Nga In Lai</span>
+            <span class="sup-title">Aquisição fonológica do português europeu por aprendentes bilingues cantonês-mandarim: restrições fonotáticas ou vantagens do bilinguismo?</span>
+            <span class="sup-title-en">Phonological acquisition of European Portuguese by bilingual Cantonese-Mandarin learners: Phonotactic restrictions or advantages of bilingualism?</span>
+            <span class="sup-meta">MA in Linguistics · University of Lisbon</span>
+            <span class="sup-cosup">Co-supervision with Adelina Castelo</span>
+          </div>
         </div>
-        <div class="stat">
-          <span class="stat-num">2</span>
-          <span class="stat-label">Portuguese varieties</span>
+
+        <div class="sup-item">
+          <span class="sup-badge year">2024</span>
+          <div class="sup-body">
+            <span class="sup-name">Xinyan Wang</span>
+            <span class="sup-title">Aquisição do processo de assimilação do vozeamento da fricativa /s/ em Português Europeu por aprendentes chineses</span>
+            <span class="sup-title-en">Acquisition of the voicing assimilation process in European Portuguese by L1-Mandarin learners</span>
+            <span class="sup-meta">MA in Linguistics · University of Lisbon</span>
+            <span class="sup-cosup">Co-supervision with Adelina Castelo</span>
+          </div>
         </div>
-        <div class="stat">
-          <span class="stat-num">5 min</span>
-          <span class="stat-label">Administration time</span>
+
+        <div class="sup-item">
+          <span class="sup-badge year">2022</span>
+          <div class="sup-body">
+            <span class="sup-name">Yidan Cao</span>
+            <span class="sup-title">Efeitos do contexto adjacente na aquisição das consonantes líquidas em ataque ramificado do português europeu por aprendentes chineses</span>
+            <span class="sup-title-en">Effects of adjacent contexts on the acquisition of Portuguese liquid consonants by L1-Mandarin learners</span>
+            <span class="sup-meta">MA in Linguistics · University of Lisbon</span>
+            <span class="sup-cosup">Co-supervision with Gueorgui Hristovsky</span>
+          </div>
         </div>
+
       </div>
-
-      <p>
-        <a class="link" href="https://app.gorilla.sc/openmaterials/513634" target="_blank">
-          Launch LextPT →
-        </a>
-      </p>
     </div>
-  </section>
 
-  <footer class="footer">
-    © 2026 Chao Zhou · University of Lisbon
-  </footer>
+  </div>
+</section>
 
-  <script src="./script.js"></script>
+<hr>
+
+<!-- LEXTPT -->
+<section id="lextpt" class="section">
+  <div class="container narrow">
+    <h2>LextPT</h2>
+    <p>A validated 5-minute vocabulary size test for L2 Portuguese proficiency, providing a fast and reliable measure of lexical knowledge.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">452</span><span class="stat-label">Participants validated</span></div>
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Portuguese varieties</span></div>
+      <div class="stat"><span class="stat-num">5 min</span><span class="stat-label">Administration time</span></div>
+    </div>
+    <p><a class="link" href="https://app.gorilla.sc/openmaterials/513634" target="_blank">Launch LextPT →</a></p>
+  </div>
+</section>
+
+<footer class="footer">© 2026 Chao Zhou · University of Lisbon</footer>
+
+<script>
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ACTIVE NAV
+var secs = document.querySelectorAll('section');
+var links = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', function() {
+  var cur = '';
+  secs.forEach(function(s) { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
+  links.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+}, { passive: true });
+
+// ── JOURNAL ARTICLES ──────────────────────────────────────
+var publications = [
+  { title: 'Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.', journal: 'Linguistic Inquiry', year: 'In press', doi: '10.1017/S136672892510011x' },
+  { title: 'Zhou, C. & J. Ver\u00EDssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?', journal: 'Bilingualism: Language and Cognition', year: 2025, doi: '10.1017/S1366728925100114' },
+  { title: 'Zhou, C. & M. J. Freitas. Modelling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.', journal: 'Language Acquisition', year: 2024, doi: '10.1080/10489223.2024.2314029' },
+  { title: 'Zhou, C. & S. Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.', journal: 'Glossa: a journal of general linguistics', year: 2024, doi: '10.16995/glossa.9692' },
+  { title: 'Zhou, C. & A. Rato. Syllable position effects in the perception of L2 Portuguese /l/ and /\u027E/ by L1-Mandarin learners.', journal: 'Second Language Research', year: 2023, doi: '10.1177/02676583221137713' },
+  { title: 'Flores, C., C. Zhou & C. Eira. \u201CI no longer count in German\u201D. On dominance shift in returnee heritage speakers.', journal: 'Applied Psycholinguistics', year: 2022, doi: '10.1017/S0142716422000261' },
+  { title: 'Zhou, C. & X. Li. LextPT: A reliable and efficient vocabulary size test for L2 Portuguese proficiency.', journal: 'Behavior Research Methods', year: 2021, doi: '10.3758/s13428-021-01731-1' },
+  { title: 'Zhou, C. Dissertation Notice: L2 speech learning of European Portuguese /l/ and /\u027E/ by L1-Mandarin learners: Experimental evidence and theoretical modelling.', journal: 'Language Acquisition', year: 2021, doi: '10.1080/10489223.2021.1952591' },
+  { title: 'Zhou, C., M. Cruz & S. Frota. O ritmo da interl\u00EDngua na produ\u00E7\u00E3o do Portugu\u00EAs Europeu por falantes nativos de Chin\u00EAs Mandarim.', journal: 'Revista da Associa\u00E7\u00E3o Portuguesa de Lingu\u00EDstica', year: 2017, doi: '10.26334/2183-9077/rapln3ano2017a22' }
+];
+
+var pubEl = document.getElementById('pub-container');
+publications.forEach(function(p) {
+  var d = document.createElement('div');
+  d.className = 'pub';
+  d.innerHTML = '<span class="year">' + p.year + '</span><div class="pub-body"><span class="pub-title">' + p.title + '</span><em class="journal">' + p.journal + '</em>' + (p.doi ? '<div class="meta"><a href="https://doi.org/' + p.doi + '" target="_blank" rel="noopener">DOI \u2197</a></div>' : '') + '</div>';
+  pubEl.appendChild(d);
+});
+
+// ── BOOK CHAPTERS & PROCEEDINGS ───────────────────────────
+var proceedings = [
+  { authors: 'Matzenauer, C., Freitas, M. J. & C. Zhou.', title: 'Theoretical models for phonological development.', book: 'Trends in the Acquisition of Portuguese Phonology', year: 2026, link: 'https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989', linkLabel: 'Link' },
+  { authors: 'Alves, U., Castelo, A., Rato, A. & C. Zhou.', title: 'Portuguese L2 Phonology.', book: 'Trends in the Acquisition of Portuguese Phonology', year: 2026, link: 'https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989', linkLabel: 'Link' },
+  { authors: 'Berti, L. & C. Zhou.', title: 'Rela\u00E7\u00E3o entre produ\u00E7\u00E3o e percep\u00E7\u00E3o das l\u00EDquidas no Portugu\u00EAs: Dados de aquisi\u00E7\u00E3o de L1 e L2.', book: 'Fonologia do Portugu\u00EAs e Interfaces: Fen\u00F4menos da Aquisi\u00E7\u00E3o e da Varia\u00E7\u00E3o', year: 2023, link: 'https://doi.org/10.4324/9781003294344-7', linkLabel: 'DOI' },
+  { authors: 'Cao, Y., C. Zhou & G. Hristovsky.', title: 'Exploring the Phonetic Context Effects on the Production of Portuguese /\u027E/ by L1-Mandarin Learners.', book: 'Proceedings of 20th International Congress of Phonetic Sciences (ICPhS)', year: 2023, link: 'https://www.researchgate.net/publication/370230928', linkLabel: 'Preprint' },
+  { authors: 'Zhou, C.', title: 'O contraste lateral-r\u00F3tico do portugu\u00EAs europeu e do chin\u00EAs mandarim: an\u00E1lise comparativa e estudos de PLE.', book: 'Lingu\u00EDstica Contrastiva: Estudos Portugu\u00EAs \u2013 Chin\u00EAs. Zhang, J. & Grosso, M. (eds.), University of Macau', year: 2023, link: 'https://www.researchgate.net/publication/368983650', linkLabel: 'Preprint' },
+  { authors: 'Zhou, C. & A. Jesus.', title: 'Portuguese Has Two Underlying Rhotics: Evidence from Lisbon and Carioca Varieties.', book: 'Supplemental Proceedings of the 2021 Annual Meeting on Phonology', year: 2022, link: 'https://doi.org/10.3765/amp.v9i0.5167', linkLabel: 'DOI' },
+  { authors: 'Zhou, C. & M. J. Freitas.', title: 'A ordem da aquisi\u00E7\u00E3o dos plurais com lateral final do PE: uma an\u00E1lise \u00E0 luz da Teoria da Otimidade.', book: 'Atas do I PhonOshuttle Opo \u2013 Ponte A\u00E9rea de Fonologia', year: 2022, link: 'https://ler.letras.up.pt/uploads/ficheiros/19217.pdf', linkLabel: 'Link' },
+  { authors: 'Zhou, C., M. J. Freitas & A. Castelo.', title: 'On the Acquisition of European Portuguese Liquid Consonants by L1-Mandarin Learners.', book: 'Multilingualism and Third Language Acquisition: Learning and Teaching Trends. Pinto, J. & Alexandre, N. (eds.), Language Science Press', year: 2021, link: 'https://langsci-press.org/catalog/book/290', linkLabel: 'DOI' },
+  { authors: 'Zhou, C. & S. Hamann.', title: 'Cross-linguistic interaction between phonological categorization and orthography predicts prosodic effects in the acquisition of Portuguese liquids by L1-Mandarin learners.', book: 'Proceedings of Interspeech 2020', year: 2020, link: 'http://doi.org/10.21437/interspeech.2020-2689', linkLabel: 'DOI' }
+];
+
+var procEl = document.getElementById('proc-container');
+proceedings.forEach(function(p) {
+  var d = document.createElement('div');
+  d.className = 'pub';
+  d.innerHTML = '<span class="year">' + p.year + '</span><div class="pub-body"><span class="pub-authors">' + p.authors + '</span><span class="pub-title">' + p.title + '</span><em class="journal">' + p.book + '</em>' + (p.link ? '<div class="meta"><a href="' + p.link + '" target="_blank" rel="noopener">' + p.linkLabel + ' \u2197</a></div>' : '') + '</div>';
+  procEl.appendChild(d);
+});
+</script>
 </body>
-
 </html>
