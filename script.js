@@ -92,6 +92,8 @@ const publications = [
   journal: "Revista da Associação Portuguesa de Linguística",
   year: 2017,
   doi: "10.26334/2183-9077/rapln3ano2017a22"
+}
+
 ];
 
 const container = document.getElementById("pub-container");
@@ -109,11 +111,13 @@ publications.forEach(pub => {
       ${pub.title}<br>
       <i>${pub.journal}</i>
 
-      <div class="meta">
-        <a href="https://doi.org/${pub.doi}" target="_blank">
-          DOI: ${pub.doi}
-        </a>
-      </div>
+      ${pub.doi.trim() ? `
+        <div class="meta">
+          <a href="https://doi.org/${pub.doi}" target="_blank">
+            DOI
+          </a>
+        </div>
+      ` : ""}
     </div>
   `;
 
