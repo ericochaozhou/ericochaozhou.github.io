@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chao Zhou | Linguistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* =====================
+   TOKENS
+   ===================== */
+:root {
+  --text:       #1a1a1a;
+  --muted:      #6b7280;
+  --subtle:     #9ca3af;
+  --border:     #e8e8e4;
+  --bg:         #fafaf8;
+  --accent:     #1d4ed8;
+  --accent-dim: #dbeafe;
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Type scale — three readable tiers
+     11px  labels / micro / uppercase caps
+     13px  secondary prose (journal, meta, nav)
+     15px  primary body (pub titles, news, bio, lists)
+     24px  section headings
+     26px  bio name                                    */
+  --size-xs:   11px;
+  --size-sm:   14px;
+  --size-base: 16px;
+  --size-xl:   24px;
+  --size-2xl:  32px;
+
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  28px;
+  --space-lg:  56px;
+  --space-xl:  88px;
+
+  --radius: 3px;
+  --transition: 160ms ease;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: var(--size-base); -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 920px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 28px;
+}
+.logo { font-family: var(--font-display); font-weight: 500; font-size: var(--size-base); letter-spacing: 0.02em; }
+nav { display: flex; align-items: center; gap: 4px; }
+nav a {
+  display: inline-block; padding: 5px 11px;
+  text-decoration: none; color: var(--muted);
+  font-size: var(--size-sm); font-weight: 400; letter-spacing: 0.025em;
+  border-radius: 20px;
+  transition: color var(--transition), background var(--transition);
+}
+nav a:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+nav a.active { color: var(--accent); background: var(--accent-dim); }
+
+/* LAYOUT */
+.section { padding: var(--space-xl) 28px; }
+.container { max-width: 920px; margin: auto; }
+.narrow { max-width: 680px; }
+
+/* TYPOGRAPHY */
+h2 {
+  font-family: var(--font-display); font-size: var(--size-xl);
+  font-weight: 500; line-height: 1.25; letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+p { font-size: var(--size-base); line-height: 1.85; }
+
+/* HR */
+hr { border: none; border-top: 1px solid var(--border); max-width: 920px; margin: 0 auto; }
+
+/* LINKS */
+.link {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid transparent; transition: border-color var(--transition);
+}
+.link:hover { border-bottom-color: var(--accent); }
+
+/* =====================
+   HERO
+   ===================== */
+.hero {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 52px 28px 44px;
+}
+
+/* BIO */
+.bio-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 5px;
+}
+.bio-role {
+  font-size: var(--size-sm);
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+.bio-text {
+  font-size: var(--size-base);
+  line-height: 1.82;
+  color: var(--text);
+}
+.email-line {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: white; border: 1px solid var(--border); border-radius: 4px;
+  padding: 6px 12px; margin-top: 16px;
+  font-size: 12px; color: var(--muted); letter-spacing: 0.015em;
+}
+.email-line::before { content: '\2709'; font-size: 11px; opacity: 0.55; }
+
+/* NEWS */
+.news-block {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.news-header {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+}
+.news-header-title {
+  font-size: var(--size-sm); font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.news-live-dot {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fef3c7; border: 1px solid #fcd34d;
+  border-radius: 20px; padding: 2px 8px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #92400e;
+}
+.news-live-dot::before {
+  content: ''; width: 5px; height: 5px;
+  background: #f59e0b; border-radius: 50%; flex-shrink: 0;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.7); }
+}
+
+.news-list { display: flex; flex-direction: column; }
+.news-item {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 0 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.news-item:first-child { border-top: 1px solid var(--border); }
+
+.news-left {
+  display: flex; flex-direction: column; gap: 5px; padding-top: 2px;
+}
+.news-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 3px; padding: 2px 6px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; width: fit-content;
+}
+.news-badge.award { background: #fef9c3; border: 1px solid #fde047; color: #713f12; }
+.news-badge.paper { background: var(--accent-dim); border: 1px solid #bfdbfe; color: #1e40af; }
+.news-badge.grant { background: #dcfce7; border: 1px solid #bbf7d0; color: #166534; }
+.news-badge.talk  { background: #dcfce7; border: 1px solid #bbf7d0; color: #166534; }
+
+.news-date { font-size: var(--size-xs); color: var(--subtle); letter-spacing: 0.03em; }
+
+/* ── NEWS TEXT: primary body tier ── */
+.news-text { font-size: var(--size-base); line-height: 1.82; color: var(--text); padding-top: 2px; }
+.news-text em { font-family: var(--font-display); font-style: italic; font-size: var(--size-base); color: var(--text); }
+
+/* =====================
+   RESEARCH INTRO
+   ===================== */
+.research-intro {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--size-base);
+  line-height: 1.78;
+  color: var(--muted);
+  border-left: 2px solid var(--border);
+  padding-left: 20px;
+  margin-bottom: var(--space-lg);
+}
+
+/* =====================
+   PUBLICATIONS
+   ===================== */
+.pub-section { margin-top: var(--space-lg); }
+.pub-section-label {
+  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.publist { display: flex; flex-direction: column; }
+.pub {
+  display: grid; grid-template-columns: 68px 1fr; gap: 0 20px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.pub:first-child { border-top: 1px solid var(--border); }
+.pub:hover { background: rgba(0,0,0,0.015); margin: 0 -12px; padding: 20px 12px; border-radius: var(--radius); }
+.year { font-size: var(--size-sm); color: var(--subtle); letter-spacing: 0.03em; padding-top: 3px; white-space: nowrap; }
+.pub-body { display: flex; flex-direction: column; gap: 4px; }
+.pub-authors { color: var(--muted); font-size: var(--size-sm); display: block; margin-bottom: 2px; }
+.pub-title { font-size: var(--size-base); line-height: 1.65; }
+.journal-row { display: flex; align-items: baseline; gap: 6px; margin-top: 3px; }
+.journal { font-family: var(--font-display); font-style: italic; font-size: var(--size-base); color: var(--text); line-height: 1.5; }
+.doi-badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-family: var(--font-body); font-style: normal;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; text-decoration: none;
+  background: var(--accent-dim); color: var(--accent);
+  border: 1px solid #bfdbfe; border-radius: 20px;
+  padding: 1px 7px; flex-shrink: 0;
+  opacity: 0.85; transition: opacity var(--transition), background var(--transition);
+  position: relative; top: -1px;
+}
+.doi-badge:hover { opacity: 1; background: #bfdbfe; }
+
+/* Flagship journal highlight in news */
+.journal-flagship {
+  font-family: var(--font-display); font-style: italic;
+  font-size: var(--size-base); font-weight: 600;
+  color: var(--accent);
+}
+
+/* VIEW ALL */
+.view-all-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: var(--space-md); padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
+}
+.view-all-note { font-size: var(--size-sm); color: var(--muted); }
+.btn-view-all {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--text); color: white;
+  text-decoration: none; font-size: var(--size-sm); font-weight: 500;
+  letter-spacing: 0.02em; padding: 9px 18px; border-radius: 4px;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-view-all:hover { background: #111; transform: translateY(-1px); }
+
+/* TEACHING */
+.teaching-block { margin-bottom: var(--space-md); }
+.teaching-block:last-child { margin-bottom: 0; }
+.teaching-block b {
+  font-weight: 500; font-size: var(--size-sm); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); display: block; margin-bottom: var(--space-xs);
+}
+ul.clean { margin: var(--space-sm) 0 var(--space-md) 20px; display: flex; flex-direction: column; gap: 6px; }
+ul.clean li { font-size: var(--size-base); line-height: 1.65; }
+
+/* =====================
+   SUPERVISION — compact
+   ===================== */
+.supervision-section { margin-top: var(--space-lg); }
+.sup-group-label {
+  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+.sup-list { display: flex; flex-direction: column; }
+.sup-item {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+}
+.sup-name {
+  font-size: var(--size-base); font-weight: 500; color: var(--text);
+}
+.sup-degree {
+  font-size: var(--size-xs); color: var(--subtle); letter-spacing: 0.02em;
+}
+.sup-title {
+  font-family: var(--font-display); font-style: italic;
+  font-size: var(--size-sm); color: var(--muted); line-height: 1.5;
+}
+
+/* LEXTPT */
+.stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin: var(--space-md) 0; }
+.stat { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 14px 20px; min-width: 160px; }
+.stat-num { font-family: var(--font-display); font-size: var(--size-2xl); font-weight: 500; line-height: 1; display: block; margin-bottom: 4px; }
+.stat-label { font-size: var(--size-xs); color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* FOOTER */
+.footer { text-align: center; padding: 36px 28px; color: var(--subtle); font-size: var(--size-sm); letter-spacing: 0.02em; border-top: 1px solid var(--border); }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .hero { padding: 36px 18px 36px; }
+  h2 { font-size: 18px; }
+  .nav-inner { padding: 14px 18px; }
+  .section { padding-left: 18px; padding-right: 18px; }
+  nav a { padding: 4px 8px; font-size: 12px; }
+  .pub { grid-template-columns: 54px 1fr; gap: 0 12px; }
+  .view-all-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .news-item { grid-template-columns: 72px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">Chao Zhou</div>
+    <nav>
+      <a href="#top">Bio</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#lextpt">LextPT</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<div id="top" class="hero">
+
+  <!-- BIO -->
+  <h1 class="bio-name">Chao Zhou</h1>
+  <p class="bio-role">Assistant Professor · University of Lisbon</p>
+  <p class="bio-text">I am a phonologist working in the Department of General and Romance Linguistics at the University of Lisbon (ULisboa).</p>
+  <div class="email-line">zhouchao at edu.ulisboa.pt</div>
+
+  <!-- NEWS -->
+  <div class="news-block">
+    <div class="news-header">
+      <span class="news-header-title">News</span>
+      <span class="news-live-dot">Updates</span>
+    </div>
+
+    <div class="news-list">
+
+      <div class="news-item">
+        <div class="news-left">
+          <span class="news-badge award">🏆 Award</span>
+          <span class="news-date">May 2026</span>
+        </div>
+        <span class="news-text">
+          Honoured to receive the <strong>ULisboa/CGD Research Award 2026 for Linguistics</strong> from <strong>Caixa Geral de Depósitos</strong>, which aims to distinguish research excellence and incentivize prestigious international publications.
+        </span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-left">
+          <span class="news-badge paper">Paper</span>
+          <span class="news-date">2026</span>
+        </div>
+        <span class="news-text">
+          New article with Silke Hamann to appear in <span class="journal-flagship">✦ Linguistic Inquiry</span> — "A revised multi-modal formal account for orthography-induced sound patterns."
+        </span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-left">
+          <span class="news-badge talk">Talk</span>
+          <span class="news-date">Jun 2026</span>
+        </div>
+        <span class="news-text">
+          Invited talk: "Para uma abordagem formal das interações ortografia–fonologia na aquisição de L2." <a class="link" href="https://www.even3.com.br/jornada-brasil-portugal-de-aquisicao-de-linguagem-705838/" target="_blank" rel="noopener"><em>Mesa-Redonda 2: Aquisição e Processamento de L2 – Jornada Brasil-Portugal de Aquisição de Linguagem</em></a> Jun 1–3, Pelotas.
+        </span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-left">
+          <span class="news-badge talk">Talk</span>
+          <span class="news-date">Jun 2026</span>
+        </div>
+        <span class="news-text">
+          Conference talk with Gemma Repiso-Puigdelliura: "Language mode interacts with dominance in Catalan-Spanish bilingual speech perception." <a class="link" href="https://eurosla35.fcsh.unl.pt/" target="_blank" rel="noopener"><em>EuroSLA 35</em></a> Jun 24–27, Lisbon.
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="section">
+  <div class="container narrow">
+
+    <p class="research-intro">A central thread in my research is to combine theoretical modelling (BiPhon-HG and OT) and experimental methods to understand how abstract phonological knowledge is acquired, represented, and shaped by multilingual experience.</p>
+
+    <h2>Selected Publications</h2>
+
+    <div class="pub-section">
+      <div class="pub-section-label">Journal Articles</div>
+      <div class="publist" id="pub-container"></div>
+    </div>
+
+    <div class="view-all-row">
+      <span class="view-all-note"> </span>
+      <a href="publications.html" class="btn-view-all">
+        Full publication list
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.5 7H11.5M11.5 7L8 3.5M11.5 7L8 10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<hr>
+
+<!-- TEACHING -->
+<section id="teaching" class="section">
+  <div class="container narrow">
+    <h2>Teaching</h2>
+
+    <div class="teaching-block">
+      <b>University of Lisbon</b>
+      <ul class="clean">
+        <li>Phonology: Theoretical Approaches and Experimental Methods</li>
+        <li>L2 Acquisition and Development</li>
+        <li>The Study of Human Language</li>
+        <li>Scientific &amp; Technical Translation (Chinese–Portuguese)</li>
+      </ul>
+    </div>
+
+    <div class="teaching-block">
+      <b>University of Minho</b>
+      <ul class="clean">
+        <li>Phonetics, Phonology and L2 Acquisition</li>
+        <li>Advanced Chinese Grammar</li>
+      </ul>
+    </div>
+
+    <!-- PhD SUPERVISION -->
+    <div class="supervision-section">
+      <div class="sup-group-label">PhD Supervision</div>
+      <div class="sup-list">
+
+        <div class="sup-item">
+          <span class="sup-name">Alexandra Afonso</span>
+          <span class="sup-degree">PhD in Linguistics · University of Lisbon · Ongoing</span>
+          <span class="sup-title">Desenvolvimento das competências de perceção da fala em crianças portuguesas com desenvolvimento típico</span>
+        </div>
+
+        <div class="sup-item">
+          <span class="sup-name">Carolina Miranda</span>
+          <span class="sup-degree">PhD in Linguistics · University of Lisbon · Ongoing</span>
+          <span class="sup-title">Code-switching em falantes bilingues de Português Europeu e Chinês Mandarim: efeitos a nível suprassegmental</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MA SUPERVISION -->
+    <div class="supervision-section">
+      <div class="sup-group-label">MA Supervision</div>
+      <div class="sup-list">
+
+        <div class="sup-item">
+          <span class="sup-name">Aira Nosolini</span>
+          <span class="sup-degree">MA in Estudos Interculturais Português/Chinês · University of Minho · Ongoing</span>
+          <span class="sup-title">A perceção do T3 sândi do chinês mandarim por falantes de herança e aprendentes L2</span>
+        </div>
+
+        <div class="sup-item">
+          <span class="sup-name">Nga In Lai</span>
+          <span class="sup-degree">MA in Linguistics · University of Lisbon · 2025</span>
+          <span class="sup-title">Aquisição fonológica do português europeu por aprendentes bilingues cantonês-mandarim: restrições fonotáticas ou vantagens do bilinguismo?</span>
+        </div>
+
+        <div class="sup-item">
+          <span class="sup-name">Xinyan Wang</span>
+          <span class="sup-degree">MA in Linguistics · University of Lisbon · 2024</span>
+          <span class="sup-title">Aquisição do processo de assimilação do vozeamento da fricativa /s/ em Português Europeu por aprendentes chineses</span>
+        </div>
+
+        <div class="sup-item">
+          <span class="sup-name">Yidan Cao</span>
+          <span class="sup-degree">MA in Linguistics · University of Lisbon · 2022</span>
+          <span class="sup-title">Efeitos do contexto adjacente na aquisição das consonantes líquidas em ataque ramificado do português europeu por aprendentes chineses</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr>
+
+<!-- LEXTPT -->
+<section id="lextpt" class="section">
+  <div class="container narrow">
+    <h2>LextPT</h2>
+    <p>A validated 5-minute vocabulary size test for L2 Portuguese proficiency, providing a fast and reliable measure of lexical knowledge.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">452</span><span class="stat-label">Participants validated</span></div>
+      <div class="stat">
+        <span class="stat-num">🇵🇹 🇧🇷</span>
+        <span class="stat-label">Both European and Brazilian varieties</span>
+      </div>
+      <div class="stat"><span class="stat-num">5 min</span><span class="stat-label">Administration time</span></div>
+    </div>
+    <p><a class="link" href="https://app.gorilla.sc/openmaterials/513634" target="_blank">Launch LextPT →</a></p>
+  </div>
+</section>
+
+<footer class="footer">© 2026 Chao Zhou · University of Lisbon</footer>
+
+<script>
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ACTIVE NAV
+var secs = document.querySelectorAll('section[id]');
+var links = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', function() {
+  var cur = 'top';
+  secs.forEach(function(s) { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
+  links.forEach(function(a) {
+    var href = a.getAttribute('href');
+    a.classList.toggle('active', href === '#' + cur || (href === '#top' && cur === 'top'));
+  });
+}, { passive: true });
+
+// ── SELECTED PUBLICATIONS ────────────────────────────────
+var selected = [
+  { title: 'Zhou, C. &amp; S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.', journal: 'Linguistic Inquiry', year: 'In press', doi: '10.1017/S136672892510011x' },
+  { title: 'Zhou, C. &amp; J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?', journal: 'Bilingualism: Language and Cognition', year: 2025, doi: '10.1017/S1366728925100114' },
+  { title: 'Zhou, C. &amp; M. J. Freitas. Modelling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.', journal: 'Language Acquisition', year: 2024, doi: '10.1080/10489223.2024.2314029' },
+  { title: 'Zhou, C. &amp; S. Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.', journal: 'Glossa: a journal of general linguistics', year: 2024, doi: '10.16995/glossa.9692' },
+  { title: 'Zhou, C. &amp; A. Rato. Syllable position effects in the perception of L2 Portuguese /l/ and /ɾ/ by L1-Mandarin learners.', journal: 'Second Language Research', year: 2023, doi: '10.1177/02676583221137713' },
+  { title: 'Zhou, C. &amp; X. Li. LextPT: A reliable and efficient vocabulary size test for L2 Portuguese proficiency.', journal: 'Behavior Research Methods', year: 2021, doi: '10.3758/s13428-021-01731-1' },
+];
+
+var pubEl = document.getElementById('pub-container');
+selected.forEach(function(p) {
+  var d = document.createElement('div');
+  d.className = 'pub';
+  d.innerHTML =
+    '<span class="year">' + p.year + '</span>' +
+    '<div class="pub-body">' +
+      '<span class="pub-title">' + p.title + '</span>' +
+      '<span class="journal-row">' +
+        '<em class="journal">' + p.journal + '</em>' +
+        (p.doi ? '<a class="doi-badge" href="https://doi.org/' + p.doi + '" target="_blank" rel="noopener" title="' + p.doi + '">doi ↗</a>' : '') +
+      '</span>' +
+    '</div>';
+  pubEl.appendChild(d);
+});
+</script>
+</body>
+</html>
