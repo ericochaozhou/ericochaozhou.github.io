@@ -703,11 +703,8 @@
     }
 
     .supervision-row {
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      align-items: center;
-      gap: 20px;
-      padding: 16px 0;
+      display: block;
+      padding: 13px 0;
       border-bottom: 1px solid var(--line-soft);
     }
 
@@ -715,36 +712,50 @@
       border-bottom: 0;
     }
 
+    .supervision-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .supervision-person {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 9px;
+      min-width: 0;
+    }
+
     .supervision-name {
       color: var(--text);
-      font-size: 15.5px;
-      font-weight: 700;
-      line-height: 1.35;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.005em;
     }
 
     .supervision-degree {
-      display: block;
-      margin-top: 4px;
       color: var(--muted);
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 500;
-      line-height: 1.4;
+      line-height: 1.45;
+      text-align: right;
+      white-space: nowrap;
     }
 
     .supervision-title {
-      align-self: center;
-      color: var(--text);
-      font-size: 15.8px;
+      max-width: 560px;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 14.5px;
       font-weight: 500;
-      line-height: 1.55;
-      letter-spacing: -0.005em;
-      padding-top: 2px;
+      line-height: 1.5;
+      letter-spacing: -0.004em;
     }
 
     .supervision-type {
       display: inline-flex;
       width: fit-content;
-      margin-bottom: 8px;
       padding: 3px 8px;
       border-radius: 999px;
       color: var(--accent);
@@ -1119,54 +1130,66 @@
             <h3 class="teaching-subtitle">Supervision</h3>
             <div class="supervision-list">
               <div class="supervision-row">
-                <div>
-                  <span class="supervision-type">PhD</span>
-                  <div class="supervision-name">Alexandra Afonso</div>
+                <div class="supervision-head">
+                  <div class="supervision-person">
+                    <span class="supervision-name">Alexandra Afonso</span>
+                    <span class="supervision-type">PhD</span>
+                  </div>
                   <span class="supervision-degree">University of Lisbon · Ongoing</span>
                 </div>
                 <div class="supervision-title">Speech perception development in Portuguese children</div>
               </div>
 
               <div class="supervision-row">
-                <div>
-                  <span class="supervision-type">PhD</span>
-                  <div class="supervision-name">Carolina Miranda</div>
+                <div class="supervision-head">
+                  <div class="supervision-person">
+                    <span class="supervision-name">Carolina Miranda</span>
+                    <span class="supervision-type">PhD</span>
+                  </div>
                   <span class="supervision-degree">University of Lisbon · Ongoing</span>
                 </div>
                 <div class="supervision-title">Code-switching in European Portuguese–Mandarin bilingual speech</div>
               </div>
 
               <div class="supervision-row">
-                <div>
-                  <span class="supervision-type">MA</span>
-                  <div class="supervision-name">Aira Nosolini</div>
+                <div class="supervision-head">
+                  <div class="supervision-person">
+                    <span class="supervision-name">Aira Nosolini</span>
+                    <span class="supervision-type">MA</span>
+                  </div>
                   <span class="supervision-degree">University of Minho · Ongoing</span>
                 </div>
                 <div class="supervision-title">Mandarin T3 sandhi perception by heritage speakers and L2 learners</div>
               </div>
 
               <div class="supervision-row">
-                <div>
-                  <span class="supervision-type">MA</span>
-                  <div class="supervision-name">Nga In Lai</div>
+                <div class="supervision-head">
+                  <div class="supervision-person">
+                    <span class="supervision-name">Nga In Lai</span>
+                    <span class="supervision-type">MA</span>
+                  </div>
                   <span class="supervision-degree">University of Lisbon · 2025</span>
                 </div>
                 <div class="supervision-title">L2 European Portuguese phonology in Cantonese–Mandarin bilingual learners</div>
               </div>
 
               <div class="supervision-row">
-                <div>
-                  <span class="supervision-type">MA</span>
-                  <div class="supervision-name">Xinyan Wang</div>
+                <div class="supervision-head">
+                  <div class="supervision-person">
+                    <span class="supervision-name">Xinyan Wang</span>
+                    <span class="supervision-type">MA</span>
+                  </div>
                   <span class="supervision-degree">University of Lisbon · 2024</span>
                 </div>
                 <div class="supervision-title">Acquisition of European Portuguese /s/ voicing assimilation</div>
               </div>
 
               <div class="supervision-row">
-                <div>
-                  <span class="supervision-type">MA</span>
-                  <div class="supervision-name">Yidan Cao</div>
+                <div class="supervision-head">
+                  <div class="supervision-person">
+                    <span class="supervision-name">Yidan Cao</span>
+                    <span class="supervision-type">MA</span>
+                  </div>
                   <span class="supervision-degree">University of Lisbon · 2022</span>
                 </div>
                 <div class="supervision-title">Adjacent-context effects in the acquisition of Portuguese liquid clusters</div>
