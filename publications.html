@@ -1,244 +1,540 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Full publication list of Chao Zhou, including journal articles, book chapters, and conference proceedings." />
   <title>Publications | Chao Zhou</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-:root {
-  --text:       #1a1a1a;
-  --muted:      #6b7280;
-  --subtle:     #9ca3af;
-  --border:     #e8e8e4;
-  --bg:         #fafaf8;
-  --accent:     #1d4ed8;
-  --accent-dim: #dbeafe;
 
-  --font-display: 'Lora', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
 
-  --size-xs:   11px;
-  --size-sm:   13px;
-  --size-base: 15.5px;
-  --size-lg:   18px;
-  --size-xl:   24px;
-  --size-2xl:  34px;
+  <style>
+    :root {
+      --bg: #f3f2ee;
+      --paper: #fbfaf6;
+      --text: #181716;
+      --soft-text: #3d3a36;
+      --muted: #706d66;
+      --faint: #9f9a91;
+      --line: #d8d4cc;
+      --line-soft: #e5e1d9;
+      --accent: #183f7a;
+      --accent-soft: #eef3fb;
+      --accent-soft-strong: #dfeafe;
+      --surface: rgba(255, 255, 255, 0.68);
+      --surface-hover: rgba(255, 255, 255, 0.86);
+      --shadow-soft: 0 12px 34px rgba(33, 29, 24, 0.055);
 
-  --space-xs:  8px;
-  --space-sm:  16px;
-  --space-md:  28px;
-  --space-lg:  56px;
-  --space-xl:  88px;
+      --font-serif: "Lora", Georgia, serif;
+      --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --radius: 3px;
-  --transition: 160ms ease;
-}
+      --max: 980px;
+      --narrow: 760px;
+      --transition: 160ms ease;
+    }
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { font-size: var(--size-base); -webkit-font-smoothing: antialiased; }
-body {
-  font-family: var(--font-body);
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.8;
-  letter-spacing: 0.01em;
-}
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-/* NAV */
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(250,250,248,0.92);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-inner {
-  max-width: 920px; margin: auto;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 28px;
-}
-.logo {
-  font-family: var(--font-display); font-weight: 500;
-  font-size: var(--size-base); letter-spacing: 0.02em;
-  text-decoration: none; color: var(--text);
-}
-.back-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: var(--muted); text-decoration: none;
-  font-size: var(--size-sm); font-weight: 400;
-  letter-spacing: 0.02em; padding: 5px 11px;
-  border-radius: 20px;
-  transition: color var(--transition), background var(--transition);
-}
-.back-link:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-/* PAGE HEADER */
-.page-header {
-  padding: var(--space-xl) 28px var(--space-lg);
-  max-width: 920px; margin: auto;
-}
-.page-header-label {
-  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
-}
-.page-header h1 {
-  font-family: var(--font-display); font-size: var(--size-2xl);
-  font-weight: 500; letter-spacing: -0.015em; line-height: 1.2;
-  margin-bottom: 10px;
-}
-.page-header-sub { font-size: var(--size-sm); color: var(--muted); }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.75;
+      letter-spacing: 0.005em;
+    }
 
-/* LAYOUT */
-.container { max-width: 920px; margin: auto; padding: 0 28px var(--space-xl); }
-.narrow { max-width: 680px; }
+    a {
+      color: inherit;
+    }
 
-h2 {
-  font-family: var(--font-display); font-size: var(--size-xl);
-  font-weight: 500; line-height: 1.25; letter-spacing: -0.01em;
-}
+    ::selection {
+      background: #e4ecf8;
+    }
 
-hr { border: none; border-top: 1px solid var(--border); max-width: 920px; margin: 0 auto; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(243, 242, 238, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line-soft);
+    }
 
-/* SECTION */
-.pub-section { margin-bottom: var(--space-lg); }
-.pub-section-label {
-  font-size: var(--size-xs); font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
-}
+    .nav-inner {
+      width: min(var(--max), calc(100% - 44px));
+      min-height: 66px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
 
-/* PUBS */
-.publist { display: flex; flex-direction: column; }
-.pub {
-  display: grid; grid-template-columns: 68px 1fr; gap: 0 20px;
-  padding: 20px 0; border-bottom: 1px solid var(--border);
-  transition: background var(--transition);
-}
-.pub:first-child { border-top: 1px solid var(--border); }
-.pub:hover { background: rgba(0,0,0,0.015); margin: 0 -12px; padding: 20px 12px; border-radius: var(--radius); }
-.year { font-size: var(--size-sm); color: var(--subtle); letter-spacing: 0.03em; padding-top: 3px; white-space: nowrap; }
-.pub-body { display: flex; flex-direction: column; gap: 4px; }
-.pub-authors { color: var(--muted); font-size: var(--size-sm); display: block; margin-bottom: 2px; }
-.pub-title { font-size: var(--size-base); line-height: 1.65; }
-.journal { font-family: var(--font-display); font-style: italic; font-size: var(--size-sm); color: var(--muted); display: block; line-height: 1.5; }
-.meta { margin-top: 4px; font-size: var(--size-xs); }
-.meta a {
-  color: var(--accent); text-decoration: none; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase; font-size: 10px;
-  opacity: 0.8; transition: opacity var(--transition);
-}
-.meta a:hover { opacity: 1; text-decoration: underline; }
+    .brand {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      min-width: max-content;
+    }
 
-/* FOOTER */
-.footer { text-align: center; padding: 36px 28px; color: var(--subtle); font-size: var(--size-sm); letter-spacing: 0.02em; border-top: 1px solid var(--border); }
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
 
-@media (max-width: 640px) {
-  h2 { font-size: var(--size-lg); }
-  .nav-inner { padding: 14px 18px; }
-  .page-header { padding-left: 18px; padding-right: 18px; }
-  .container { padding-left: 18px; padding-right: 18px; }
-  .pub { grid-template-columns: 54px 1fr; gap: 0 12px; }
-}
-</style>
+    .brand-subtitle {
+      color: var(--faint);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .back-link {
+      position: relative;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.035em;
+      transition: color var(--transition);
+    }
+
+    .back-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -7px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .back-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    .narrow {
+      max-width: var(--narrow);
+      margin: 0 auto;
+    }
+
+    .page-header {
+      padding: 64px 0 38px;
+    }
+
+    .page-intro {
+      padding-bottom: 4px;
+    }
+
+    h1, h2, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      padding: 0 0 14px;
+      border-bottom: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .page-subtitle {
+      max-width: 680px;
+      margin: 0;
+      color: var(--text);
+      font-size: 16.5px;
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: -0.005em;
+    }
+
+    .section {
+      padding: 28px 0 0;
+    }
+
+    .section-title {
+      margin: 0 0 24px;
+      padding: 0 0 14px;
+      border-bottom: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .pub-card {
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .publist {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pub {
+      position: relative;
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 20px;
+      padding: 22px;
+      border-bottom: 1px solid var(--line-soft);
+      transition: background var(--transition);
+    }
+
+    .pub:last-child {
+      border-bottom: 0;
+    }
+
+    .pub::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .pub:hover {
+      background: var(--surface-hover);
+    }
+
+    .pub:hover::before {
+      opacity: 1;
+    }
+
+    .year {
+      width: fit-content;
+      height: fit-content;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(24, 63, 122, 0.08);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .pub-body {
+      min-width: 0;
+    }
+
+    .pub-authors {
+      display: inline;
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+
+    .pub-title {
+      display: block;
+      color: var(--text);
+      font-size: 16.5px;
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: -0.005em;
+    }
+
+    .journal-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      margin-top: 9px;
+    }
+
+    .journal {
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 15.5px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .doi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(24, 63, 122, 0.12);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .doi-badge:hover {
+      background: var(--accent-soft-strong);
+      border-color: rgba(24, 63, 122, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      width: min(var(--max), calc(100% - 44px));
+      margin: 76px auto 0;
+      padding: 38px 0 48px;
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .back-top {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .back-top:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 420ms ease, transform 420ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner,
+      .wrap,
+      .footer {
+        width: min(100% - 30px, var(--max));
+      }
+
+      .nav-inner {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .page-header {
+        padding-top: 44px;
+      }
+
+      .summary-row {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-item {
+        border-right: 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .summary-item:last-child {
+        border-bottom: 0;
+      }
+
+      .pub {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px 18px;
+      }
+
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Chao Zhou homepage">
+        <span class="brand-name">Chao Zhou</span>
+        <span class="brand-subtitle">Linguistics</span>
+      </a>
 
-<!-- NAV -->
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">Chao Zhou</a>
-    <a href="index.html" class="back-link">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.5 7H2.5M2.5 7L6 3.5M2.5 7L6 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Back
-    </a>
-  </div>
-</header>
+      <a class="back-link" href="index.html">Back to homepage</a>
+    </div>
+  </header>
 
-<!-- PAGE HEADER -->
-<div class="page-header narrow" style="margin: 0 auto; max-width: 680px; padding-left: 28px; padding-right: 28px;">
-  <div class="page-header-label">Chao Zhou</div>
-  <h1>Publications</h1>
-  <p class="page-header-sub">9 journal articles · 9 book chapters &amp; proceedings</p>
-</div>
+  <main>
+    <section class="page-header">
+      <div class="wrap narrow">
+        <div class="page-intro reveal">
+          <h1>Full Publication List</h1>
+          <p class="page-subtitle">The links below should provide access to the publications where available. If you cannot access a paper, please feel free to email me.</p>
+        </div>
+      </div>
+    </section>
 
-<hr>
+    <section class="section">
+      <div class="wrap narrow">
+        <h2 class="section-title">Journal Articles</h2>
+        <div class="pub-card reveal">
+          <div class="publist" id="pub-container"></div>
+        </div>
+      </div>
+    </section>
 
-<!-- FULL LIST -->
-<div class="container narrow" style="max-width: 680px; padding-top: var(--space-lg);">
+    <section class="section">
+      <div class="wrap narrow">
+        <h2 class="section-title">Book Chapters &amp; Conference Proceedings</h2>
+        <div class="pub-card reveal">
+          <div class="publist" id="proc-container"></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <div class="pub-section">
-    <div class="pub-section-label">Journal Articles</div>
-    <div class="publist" id="pub-container"></div>
-  </div>
+  <footer class="footer">
+    <span>© 2026 Chao Zhou · University of Lisbon</span>
+    <a class="back-top" href="#top">Back to top ↑</a>
+  </footer>
 
-  <div class="pub-section">
-    <div class="pub-section-label">Book Chapters &amp; Conference Proceedings</div>
-    <div class="publist" id="proc-container"></div>
-  </div>
+  <script>
+    const publications = [
+      { title: "Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.", journal: "Linguistic Inquiry", year: "2026", doi: "10.1162/LING.a.585" },
+      { title: "Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?", journal: "Bilingualism: Language and Cognition", year: "2025", doi: "10.1017/S1366728925100114" },
+      { title: "Zhou, C. & M. J. Freitas. Modelling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.", journal: "Language Acquisition", year: "2024", doi: "10.1080/10489223.2024.2314029" },
+      { title: "Zhou, C. & S. Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.", journal: "Glossa: a journal of general linguistics", year: "2024", doi: "10.16995/glossa.9692" },
+      { title: "Zhou, C. & A. Rato. Syllable position effects in the perception of L2 Portuguese /l/ and /ɾ/ by L1-Mandarin learners.", journal: "Second Language Research", year: "2023", doi: "10.1177/02676583221137713" },
+      { title: "Flores, C., C. Zhou & C. Eira. “I no longer count in German”. On dominance shift in returnee heritage speakers.", journal: "Applied Psycholinguistics", year: "2022", doi: "10.1017/S0142716422000261" },
+      { title: "Zhou, C. & X. Li. LextPT: A reliable and efficient vocabulary size test for L2 Portuguese proficiency.", journal: "Behavior Research Methods", year: "2021", doi: "10.3758/s13428-021-01731-1" },
+      { title: "Zhou, C. Dissertation Notice: L2 speech learning of European Portuguese /l/ and /ɾ/ by L1-Mandarin learners: Experimental evidence and theoretical modelling.", journal: "Language Acquisition", year: "2021", doi: "10.1080/10489223.2021.1952591" },
+      { title: "Zhou, C., M. Cruz & S. Frota. O ritmo da interlíngua na produção do Português Europeu por falantes nativos de Chinês Mandarim.", journal: "Revista da Associação Portuguesa de Linguística", year: "2017", doi: "10.26334/2183-9077/rapln3ano2017a22" }
+    ];
 
-</div>
+    const pubEl = document.getElementById("pub-container");
 
-<footer class="footer">© 2026 Chao Zhou · University of Lisbon</footer>
+    publications.forEach((publication) => {
+      const item = document.createElement("article");
+      item.className = "pub";
+      item.innerHTML = `
+        <span class="year">${publication.year}</span>
+        <div class="pub-body">
+          <span class="pub-title">${publication.title}</span>
+          <span class="journal-row">
+            <em class="journal">${publication.journal}</em>
+            ${publication.doi ? `<a class="doi-badge" href="https://doi.org/${publication.doi}" target="_blank" rel="noopener" title="${publication.doi}">doi ↗</a>` : ""}
+          </span>
+        </div>
+      `;
+      pubEl.appendChild(item);
+    });
 
-<script>
-// ── JOURNAL ARTICLES ──────────────────────────────────────
-var publications = [
-  { title: 'Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.', journal: 'Linguistic Inquiry', year: '2026', doi: '10.1162/LING.a.585' },
-  { title: 'Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?', journal: 'Bilingualism: Language and Cognition', year: 2025, doi: '10.1017/S1366728925100114' },
-  { title: 'Zhou, C. & M. J. Freitas. Modelling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.', journal: 'Language Acquisition', year: 2024, doi: '10.1080/10489223.2024.2314029' },
-  { title: 'Zhou, C. & S. Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.', journal: 'Glossa: a journal of general linguistics', year: 2024, doi: '10.16995/glossa.9692' },
-  { title: 'Zhou, C. & A. Rato. Syllable position effects in the perception of L2 Portuguese /l/ and /ɾ/ by L1-Mandarin learners.', journal: 'Second Language Research', year: 2023, doi: '10.1177/02676583221137713' },
-  { title: 'Flores, C., C. Zhou & C. Eira. "I no longer count in German". On dominance shift in returnee heritage speakers.', journal: 'Applied Psycholinguistics', year: 2022, doi: '10.1017/S0142716422000261' },
-  { title: 'Zhou, C. & X. Li. LextPT: A reliable and efficient vocabulary size test for L2 Portuguese proficiency.', journal: 'Behavior Research Methods', year: 2021, doi: '10.3758/s13428-021-01731-1' },
-  { title: 'Zhou, C. Dissertation Notice: L2 speech learning of European Portuguese /l/ and /ɾ/ by L1-Mandarin learners: Experimental evidence and theoretical modelling.', journal: 'Language Acquisition', year: 2021, doi: '10.1080/10489223.2021.1952591' },
-  { title: 'Zhou, C., M. Cruz & S. Frota. O ritmo da interlíngua na produção do Português Europeu por falantes nativos de Chinês Mandarim.', journal: 'Revista da Associação Portuguesa de Linguística', year: 2017, doi: '10.26334/2183-9077/rapln3ano2017a22' }
-];
+    const proceedings = [
+      { authors: "Matzenauer, C., Freitas, M. J. & C. Zhou.", title: "Theoretical models for phonological development.", book: "Trends in the Acquisition of Portuguese Phonology", year: "2026", link: "https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989", linkLabel: "Link" },
+      { authors: "Alves, U., Castelo, A., Rato, A. & C. Zhou.", title: "Portuguese L2 Phonology.", book: "Trends in the Acquisition of Portuguese Phonology", year: "2026", link: "https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989", linkLabel: "Link" },
+      { authors: "Berti, L. & C. Zhou.", title: "Relação entre produção e percepção das líquidas no Português: Dados de aquisição de L1 e L2.", book: "Fonologia do Português e Interfaces: Fenômenos da Aquisição e da Variação", year: "2023", link: "https://doi.org/10.4324/9781003294344-7", linkLabel: "DOI" },
+      { authors: "Cao, Y., C. Zhou & G. Hristovsky.", title: "Exploring the Phonetic Context Effects on the Production of Portuguese /ɾ/ by L1-Mandarin Learners.", book: "Proceedings of 20th International Congress of Phonetic Sciences (ICPhS)", year: "2023", link: "https://www.researchgate.net/publication/370230928", linkLabel: "Preprint" },
+      { authors: "Zhou, C.", title: "O contraste lateral-rótico do português europeu e do chinês mandarim: análise comparativa e estudos de PLE.", book: "Linguística Contrastiva: Estudos Português – Chinês. Zhang, J. & Grosso, M. (eds.), University of Macau", year: "2023", link: "https://www.researchgate.net/publication/368983650", linkLabel: "Preprint" },
+      { authors: "Zhou, C. & A. Jesus.", title: "Portuguese Has Two Underlying Rhotics: Evidence from Lisbon and Carioca Varieties.", book: "Supplemental Proceedings of the 2021 Annual Meeting on Phonology", year: "2022", link: "https://doi.org/10.3765/amp.v9i0.5167", linkLabel: "DOI" },
+      { authors: "Zhou, C. & M. J. Freitas.", title: "A ordem da aquisição dos plurais com lateral final do PE: uma análise à luz da Teoria da Otimidade.", book: "Atas do I PhonOshuttle Opo – Ponte Aérea de Fonologia", year: "2022", link: "https://ler.letras.up.pt/uploads/ficheiros/19217.pdf", linkLabel: "Link" },
+      { authors: "Zhou, C., M. J. Freitas & A. Castelo.", title: "On the Acquisition of European Portuguese Liquid Consonants by L1-Mandarin Learners.", book: "Multilingualism and Third Language Acquisition: Learning and Teaching Trends. Pinto, J. & Alexandre, N. (eds.), Language Science Press", year: "2021", link: "https://langsci-press.org/catalog/book/290", linkLabel: "DOI" },
+      { authors: "Zhou, C. & S. Hamann.", title: "Cross-linguistic interaction between phonological categorization and orthography predicts prosodic effects in the acquisition of Portuguese liquids by L1-Mandarin learners.", book: "Proceedings of Interspeech 2020", year: "2020", link: "http://doi.org/10.21437/interspeech.2020-2689", linkLabel: "DOI" }
+    ];
 
-var pubEl = document.getElementById('pub-container');
-publications.forEach(function(p) {
-  var d = document.createElement('div');
-  d.className = 'pub';
-  d.innerHTML =
-    '<span class="year">' + p.year + '</span>' +
-    '<div class="pub-body">' +
-      '<span class="pub-title">' + p.title + '</span>' +
-      '<em class="journal">' + p.journal + '</em>' +
-      (p.doi ? '<div class="meta"><a href="https://doi.org/' + p.doi + '" target="_blank" rel="noopener">DOI ↗</a></div>' : '') +
-    '</div>';
-  pubEl.appendChild(d);
-});
+    const procEl = document.getElementById("proc-container");
 
-// ── BOOK CHAPTERS & PROCEEDINGS ───────────────────────────
-var proceedings = [
-  { authors: 'Matzenauer, C., Freitas, M. J. & C. Zhou.', title: 'Theoretical models for phonological development.', book: 'Trends in the Acquisition of Portuguese Phonology', year: 2026, link: 'https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989', linkLabel: 'Link' },
-  { authors: 'Alves, U., Castelo, A., Rato, A. & C. Zhou.', title: 'Portuguese L2 Phonology.', book: 'Trends in the Acquisition of Portuguese Phonology', year: 2026, link: 'https://www.routledge.com/Trends-in-the-Acquisition-of-Portuguese-Phonology/Matzenauer-Lazzarotto-Volcao-Freitas/p/book/9781032846989', linkLabel: 'Link' },
-  { authors: 'Berti, L. & C. Zhou.', title: 'Relação entre produção e percepção das líquidas no Português: Dados de aquisição de L1 e L2.', book: 'Fonologia do Português e Interfaces: Fenômenos da Aquisição e da Variação', year: 2023, link: 'https://doi.org/10.4324/9781003294344-7', linkLabel: 'DOI' },
-  { authors: 'Cao, Y., C. Zhou & G. Hristovsky.', title: 'Exploring the Phonetic Context Effects on the Production of Portuguese /ɾ/ by L1-Mandarin Learners.', book: 'Proceedings of 20th International Congress of Phonetic Sciences (ICPhS)', year: 2023, link: 'https://www.researchgate.net/publication/370230928', linkLabel: 'Preprint' },
-  { authors: 'Zhou, C.', title: 'O contraste lateral-rótico do português europeu e do chinês mandarim: análise comparativa e estudos de PLE.', book: 'Linguística Contrastiva: Estudos Português – Chinês. Zhang, J. & Grosso, M. (eds.), University of Macau', year: 2023, link: 'https://www.researchgate.net/publication/368983650', linkLabel: 'Preprint' },
-  { authors: 'Zhou, C. & A. Jesus.', title: 'Portuguese Has Two Underlying Rhotics: Evidence from Lisbon and Carioca Varieties.', book: 'Supplemental Proceedings of the 2021 Annual Meeting on Phonology', year: 2022, link: 'https://doi.org/10.3765/amp.v9i0.5167', linkLabel: 'DOI' },
-  { authors: 'Zhou, C. & M. J. Freitas.', title: 'A ordem da aquisição dos plurais com lateral final do PE: uma análise à luz da Teoria da Otimidade.', book: 'Atas do I PhonOshuttle Opo – Ponte Aérea de Fonologia', year: 2022, link: 'https://ler.letras.up.pt/uploads/ficheiros/19217.pdf', linkLabel: 'Link' },
-  { authors: 'Zhou, C., M. J. Freitas & A. Castelo.', title: 'On the Acquisition of European Portuguese Liquid Consonants by L1-Mandarin Learners.', book: 'Multilingualism and Third Language Acquisition: Learning and Teaching Trends. Pinto, J. & Alexandre, N. (eds.), Language Science Press', year: 2021, link: 'https://langsci-press.org/catalog/book/290', linkLabel: 'DOI' },
-  { authors: 'Zhou, C. & S. Hamann.', title: 'Cross-linguistic interaction between phonological categorization and orthography predicts prosodic effects in the acquisition of Portuguese liquids by L1-Mandarin learners.', book: 'Proceedings of Interspeech 2020', year: 2020, link: 'http://doi.org/10.21437/interspeech.2020-2689', linkLabel: 'DOI' }
-];
+    proceedings.forEach((publication) => {
+      const item = document.createElement("article");
+      item.className = "pub";
+      item.innerHTML = `
+        <span class="year">${publication.year}</span>
+        <div class="pub-body">
+          <span class="pub-title">${publication.authors} ${publication.title}</span>
+          <span class="journal-row">
+            <em class="journal">${publication.book}</em>
+            ${publication.link ? `<a class="doi-badge" href="${publication.link}" target="_blank" rel="noopener">${publication.linkLabel} ↗</a>` : ""}
+          </span>
+        </div>
+      `;
+      procEl.appendChild(item);
+    });
 
-var procEl = document.getElementById('proc-container');
-proceedings.forEach(function(p) {
-  var d = document.createElement('div');
-  d.className = 'pub';
-  d.innerHTML =
-    '<span class="year">' + p.year + '</span>' +
-    '<div class="pub-body">' +
-      '<span class="pub-authors">' + p.authors + '</span>' +
-      '<span class="pub-title">' + p.title + '</span>' +
-      '<em class="journal">' + p.book + '</em>' +
-      (p.link ? '<div class="meta"><a href="' + p.link + '" target="_blank" rel="noopener">' + p.linkLabel + ' ↗</a></div>' : '') +
-    '</div>';
-  procEl.appendChild(d);
-});
-</script>
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }
+  </script>
 </body>
 </html>
