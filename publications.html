@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Full publication list of Chao Zhou, including journal articles, book chapters, and conference proceedings." />
+  <meta property="og:title" content="Publications | Chao Zhou" />
+  <meta property="og:description" content="Full publication list of Chao Zhou, including journal articles, book chapters, and conference proceedings." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
   <title>Publications | Chao Zhou</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,8 +55,8 @@
       background: var(--bg);
       font-family: var(--font-sans);
       font-size: 16px;
-      line-height: 1.75;
-      letter-spacing: 0.005em;
+      line-height: 1.68;
+      letter-spacing: -0.002em;
     }
 
     a {
@@ -79,7 +83,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 28px;
+      gap: 24px;
     }
 
     .brand {
@@ -106,34 +110,27 @@
     }
 
     .back-link {
-      position: relative;
-      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(24, 63, 122, 0.12);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.035em;
-      transition: color var(--transition);
-    }
-
-    .back-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -7px;
-      height: 1px;
-      background: currentColor;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition);
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
     }
 
     .back-link:hover {
-      color: var(--text);
-    }
-
-    .back-link:hover::after {
-      transform: scaleX(1);
+      background: var(--accent-soft-strong);
+      border-color: rgba(24, 63, 122, 0.2);
+      transform: translateY(-1px);
     }
 
     .wrap {
@@ -159,26 +156,26 @@
     }
 
     h1 {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       padding: 0 0 14px;
       border-bottom: 1px solid var(--line-soft);
       color: var(--muted);
       font-family: var(--font-sans);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 800;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.08em;
       line-height: 1.2;
       text-transform: uppercase;
     }
 
     .page-subtitle {
-      max-width: 680px;
+      max-width: 660px;
       margin: 0;
       color: var(--text);
-      font-size: 16.5px;
+      font-size: 16px;
       font-weight: 500;
-      line-height: 1.6;
-      letter-spacing: -0.005em;
+      line-height: 1.62;
+      letter-spacing: -0.004em;
     }
 
     .section {
@@ -186,14 +183,14 @@
     }
 
     .section-title {
-      margin: 0 0 24px;
+      margin: 0 0 22px;
       padding: 0 0 14px;
       border-bottom: 1px solid var(--line-soft);
       color: var(--muted);
       font-family: var(--font-sans);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 800;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.08em;
       line-height: 1.2;
       text-transform: uppercase;
     }
@@ -273,10 +270,10 @@
     .pub-title {
       display: block;
       color: var(--text);
-      font-size: 16.5px;
+      font-size: 16px;
       font-weight: 500;
-      line-height: 1.6;
-      letter-spacing: -0.005em;
+      line-height: 1.62;
+      letter-spacing: -0.004em;
     }
 
     .journal-row {
@@ -288,10 +285,11 @@
     }
 
     .journal {
-      color: var(--muted);
+      color: var(--soft-text);
       font-family: var(--font-serif);
-      font-size: 15.5px;
+      font-size: 15.8px;
       font-style: italic;
+      font-weight: 500;
       line-height: 1.4;
     }
 
@@ -328,7 +326,8 @@
       justify-content: space-between;
       gap: 20px;
       color: var(--faint);
-      font-size: 13px;
+      font-size: 13.2px;
+      font-weight: 500;
     }
 
     .back-top {
@@ -420,7 +419,7 @@
         <span class="brand-subtitle">Linguistics</span>
       </a>
 
-      <a class="back-link" href="index.html">Back to homepage</a>
+      <a class="back-link" href="index.html" aria-label="Return to Chao Zhou homepage">Homepage ↗</a>
     </div>
   </header>
 
@@ -455,7 +454,7 @@
 
   <footer class="footer">
     <span>© 2026 Chao Zhou · University of Lisbon</span>
-    <a class="back-top" href="#top">Back to top ↑</a>
+    <a class="back-top" href="#top" aria-label="Back to the top of the publication page">Back to top ↑</a>
   </footer>
 
   <script>
@@ -482,7 +481,7 @@
           <span class="pub-title">${publication.title}</span>
           <span class="journal-row">
             <em class="journal">${publication.journal}</em>
-            ${publication.doi ? `<a class="doi-badge" href="https://doi.org/${publication.doi}" target="_blank" rel="noopener" title="${publication.doi}">doi ↗</a>` : ""}
+            ${publication.doi ? `<a class="doi-badge" href="https://doi.org/${publication.doi}" target="_blank" rel="noopener" title="${publication.doi}" aria-label="Open DOI ${publication.doi} in a new tab">doi ↗</a>` : ""}
           </span>
         </div>
       `;
@@ -512,7 +511,7 @@
           <span class="pub-title">${publication.authors} ${publication.title}</span>
           <span class="journal-row">
             <em class="journal">${publication.book}</em>
-            ${publication.link ? `<a class="doi-badge" href="${publication.link}" target="_blank" rel="noopener">${publication.linkLabel} ↗</a>` : ""}
+            ${publication.link ? `<a class="doi-badge" href="${publication.link}" target="_blank" rel="noopener" aria-label="Open ${publication.linkLabel} for ${publication.title} in a new tab">${publication.linkLabel} ↗</a>` : ""}
           </span>
         </div>
       `;
