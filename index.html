@@ -521,6 +521,38 @@
       display: flex;
       flex-direction: column;
     }
+    .pub-category {
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .pub-category:last-child {
+      border-bottom: 0;
+    }
+
+    .pub-category-title {
+      margin: 0;
+      padding: 18px 22px 10px;
+      color: var(--accent);
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+    }
+
+    .pub-category-note {
+      margin: 0;
+      padding: 0 22px 16px;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 500;
+      line-height: 1.55;
+    }
+
+    .pub-category .pub:last-child {
+      border-bottom: 0;
+    }
+
 
     .pub {
       position: relative;
@@ -1265,61 +1297,92 @@
   </footer>
 
   <script>
-    const selectedPublications = [
+    const selectedPublicationSections = [
       {
-        title: "Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.",
-        journal: "Linguistic Inquiry",
-        year: "2026",
-        doi: "10.1162/LING.a.585"
+        heading: "Theoretical modelling",
+        note: "Formal accounts of phonological representation and acquisition, HarmonicGrammar and OptimalityTheory version of BiPhon.",
+        publications: [
+          {
+            title: "Zhou, C. & S. Hamann. A revised multi-modal formal account for orthography-induced sound patterns.",
+            journal: "Linguistic Inquiry",
+            year: "2026",
+            doi: "10.1162/LING.a.585"
+          },
+          {
+            title: "Zhou, C. & M. J. Freitas. Modelling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.",
+            journal: "Language Acquisition",
+            year: "2024",
+            doi: "10.1080/10489223.2024.2314029"
+          },
+          {
+            title: "Zhou, C. & S. Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.",
+            journal: "Glossa: a journal of general linguistics",
+            year: "2024",
+            doi: "10.16995/glossa.9692"
+          }
+        ]
       },
       {
-        title: "Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?",
-        journal: "Bilingualism: Language and Cognition",
-        year: "2025",
-        doi: "10.1017/S1366728925100114"
+        heading: "Experimental findings",
+        note: "Cross-linguistic empirical studies on multilingual grammar.",
+        publications: [
+          {
+            title: "Zhou, C. & J. Veríssimo. L2 difficulties in the perception of Mandarin tones: Phonological universals or domain-general aptitude?",
+            journal: "Bilingualism: Language and Cognition",
+            year: "2025",
+            doi: "10.1017/S1366728925100114"
+          },
+          {
+            title: "Zhou, C. & A. Rato. Syllable position effects in the perception of L2 Portuguese /l/ and /ɾ/ by L1-Mandarin learners.",
+            journal: "Second Language Research",
+            year: "2023",
+            doi: "10.1177/02676583221137713"
+          }
+        ]
       },
       {
-        title: "Zhou, C. & M. J. Freitas. Modelling the developmental path in the acquisition of /l/-final irregular plurals by Portuguese children.",
-        journal: "Language Acquisition",
-        year: "2024",
-        doi: "10.1080/10489223.2024.2314029"
-      },
-      {
-        title: "Zhou, C. & S. Hamann. Modelling the acquisition of the Portuguese tap by L1-Mandarin learners: A BiPhon-HG account for individual differences, syllable-position effects and orthographic influences in L2 speech.",
-        journal: "Glossa: a journal of general linguistics",
-        year: "2024",
-        doi: "10.16995/glossa.9692"
-      },
-      {
-        title: "Zhou, C. & A. Rato. Syllable position effects in the perception of L2 Portuguese /l/ and /ɾ/ by L1-Mandarin learners.",
-        journal: "Second Language Research",
-        year: "2023",
-        doi: "10.1177/02676583221137713"
-      },
-      {
-        title: "Zhou, C. & X. Li. LextPT: A reliable and efficient vocabulary size test for L2 Portuguese proficiency.",
-        journal: "Behavior Research Methods",
-        year: "2021",
-        doi: "10.3758/s13428-021-01731-1"
+        heading: "Tool development",
+        note: "Vocabulary test for measuring L2 Portuguese proficiency efficiently and reliably.",
+        publications: [
+          {
+            title: "Zhou, C. & X. Li. LextPT: A reliable and efficient vocabulary size test for L2 Portuguese proficiency.",
+            journal: "Behavior Research Methods",
+            year: "2021",
+            doi: "10.3758/s13428-021-01731-1"
+          }
+        ]
       }
     ];
 
     const publicationContainer = document.getElementById("pub-container");
 
-    selectedPublications.forEach((publication) => {
-      const item = document.createElement("article");
-      item.className = "pub";
-      item.innerHTML = `
-        <span class="year">${publication.year}</span>
-        <div class="pub-body">
-          <span class="pub-title">${publication.title}</span>
-          <span class="journal-row">
-            <em class="journal">${publication.journal}</em>
-            ${publication.doi ? `<a class="doi-badge" href="https://doi.org/${publication.doi}" target="_blank" rel="noopener" title="${publication.doi}" aria-label="Open DOI ${publication.doi} in a new tab">doi ↗</a>` : ""}
-          </span>
-        </div>
+    selectedPublicationSections.forEach((section) => {
+      const sectionEl = document.createElement("section");
+      sectionEl.className = "pub-category";
+      sectionEl.setAttribute("aria-label", section.heading);
+
+      sectionEl.innerHTML = `
+        <h3 class="pub-category-title">${section.heading}</h3>
+        <p class="pub-category-note">${section.note}</p>
       `;
-      publicationContainer.appendChild(item);
+
+      section.publications.forEach((publication) => {
+        const item = document.createElement("article");
+        item.className = "pub";
+        item.innerHTML = `
+          <span class="year">${publication.year}</span>
+          <div class="pub-body">
+            <span class="pub-title">${publication.title}</span>
+            <span class="journal-row">
+              <em class="journal">${publication.journal}</em>
+              ${publication.doi ? `<a class="doi-badge" href="https://doi.org/${publication.doi}" target="_blank" rel="noopener" title="${publication.doi}" aria-label="Open DOI ${publication.doi} in a new tab">doi ↗</a>` : ""}
+            </span>
+          </div>
+        `;
+        sectionEl.appendChild(item);
+      });
+
+      publicationContainer.appendChild(sectionEl);
     });
 
     const sections = [document.getElementById("top"), ...document.querySelectorAll("section[id]")];
