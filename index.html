@@ -2179,6 +2179,118 @@
       }
     }
 
+  
+
+    /* Move Teaching Miró accents above the card, between publications and Teaching. */
+    .teaching-card .miro-mark {
+      display: none !important;
+    }
+
+    .teaching-prelude {
+      position: relative;
+      height: 54px;
+      margin: 2px 0 12px;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .teaching-prelude-mark {
+      position: absolute;
+      display: block;
+    }
+
+    .teaching-prelude-arc {
+      right: 18px;
+      top: 0;
+      width: 88px;
+      height: 46px;
+      border: 1.6px solid rgba(24, 23, 22, 0.5);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(-20deg);
+    }
+
+    .teaching-prelude-thread {
+      right: 48px;
+      top: 26px;
+      width: 108px;
+      height: 1.35px;
+      background: rgba(24, 23, 22, 0.48);
+      transform: rotate(-24deg);
+      transform-origin: left center;
+    }
+
+    .teaching-prelude-red {
+      right: 138px;
+      top: 10px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #c84a32;
+    }
+
+    .teaching-prelude-blue {
+      right: 26px;
+      top: 34px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #183f7a;
+    }
+
+    .teaching-prelude-star {
+      right: 88px;
+      top: 32px;
+      width: 14px;
+      height: 14px;
+    }
+
+    .teaching-prelude-star::before,
+    .teaching-prelude-star::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      width: 1.2px;
+      height: 14px;
+      background: rgba(24, 23, 22, 0.5);
+      border-radius: 999px;
+    }
+
+    .teaching-prelude-star::before {
+      transform: rotate(45deg);
+    }
+
+    .teaching-prelude-star::after {
+      transform: rotate(-45deg);
+    }
+
+    @media (max-width: 680px) {
+      .teaching-prelude {
+        height: 42px;
+        margin-bottom: 10px;
+      }
+      .teaching-prelude-arc {
+        right: 10px;
+        width: 72px;
+        height: 38px;
+      }
+      .teaching-prelude-thread {
+        right: 34px;
+        width: 88px;
+      }
+      .teaching-prelude-red {
+        right: 112px;
+      }
+      .teaching-prelude-blue {
+        right: 16px;
+      }
+      .teaching-prelude-star {
+        right: 70px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2289,6 +2401,13 @@
 
   <section id="teaching" class="section">
     <div class="wrap narrow">
+      <div class="teaching-prelude" aria-hidden="true">
+        <span class="teaching-prelude-mark teaching-prelude-arc"></span>
+        <span class="teaching-prelude-mark teaching-prelude-thread"></span>
+        <span class="teaching-prelude-mark teaching-prelude-red"></span>
+        <span class="teaching-prelude-mark teaching-prelude-blue"></span>
+        <span class="teaching-prelude-mark teaching-prelude-star"></span>
+      </div>
       <div class="teaching-card reveal">
         <span class="miro-mark miro-stem teaching-stem" aria-hidden="true"></span>
         <span class="miro-mark miro-dot blue teaching-dot" aria-hidden="true"></span>
